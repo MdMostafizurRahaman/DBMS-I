@@ -1,0 +1,2 @@
+declare 
+v_emp_name employees.last_name%type

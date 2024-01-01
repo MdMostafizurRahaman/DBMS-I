@@ -1,0 +1,36 @@
+SQL*Plus: Release 10.2.0.1.0 - Production on Wed Aug 9 10:16:57 2023
+
+Copyright (c) 1982, 2005, Oracle.  All rights reserved.
+
+SQL> connect system
+Enter password:
+Connected.
+SQL> alter user hr identified by hr
+  2
+SQL> alter user hr identified by hr;
+
+User altered.
+
+SQL> alter user mos identified by iit123
+  2
+SQL> alter user mos identified by iit123;
+alter user mos identified by iit123
+           *
+ERROR at line 1:
+ORA-01918: user 'MOS' does not exist
+
+
+SQL> create user iit identified by iit123 account unlock;
+
+User created.
+
+SQL> grant dba to iit
+  2
+SQL> grant dba to iit;
+
+Grant succeeded.
+
+SQL> connect iit
+Enter password:
+Connected.
+SQL>

@@ -1,0 +1,1432 @@
+
+SQL*Plus: Release 10.2.0.1.0 - Production on Wed Aug 16 14:16:57 2023
+
+Copyright (c) 1982, 2005, Oracle.  All rights reserved.
+
+SQL> connect jonny
+Enter password:
+Connected.
+SQL> select * from tab;
+
+TNAME                          TABTYPE  CLUSTERID
+------------------------------ ------- ----------
+BRANCH                         TABLE
+CUSTOMER                       TABLE
+LOAN                           TABLE
+BORROWER                       TABLE
+ACCOUNT                        TABLE
+DEPOSITOR                      TABLE
+
+6 rows selected.
+
+SQL> describe branch;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ BRANCH_NAME                               NOT NULL VARCHAR2(75)
+ BRANCH_CITY                                        VARCHAR2(50)
+ ASSESTS                                            NUMBER(20)
+
+SQL> select branch_name from branch;
+
+no rows selected
+
+SQL> @E:\A/replace_table.sql;
+
+Warning: Procedure created with compilation errors.
+
+SQL> @E:\A/replace_table.sql;
+create procedure raise_saliry
+                 *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> @E:\A/replace_table.sql;
+
+Warning: Procedure created with compilation errors.
+
+SQL> @E:\A/replace_table.sql;
+create procedure raise_salary
+                 *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> @E:\A/replace_table.sql;
+create procedure raise_salary
+                 *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> @E:\A/replace_table.sql;
+create procedure or replace raise_salary
+                 *
+ERROR at line 1:
+ORA-04050: invalid or missing procedure, function, or package name
+
+
+SQL> @E:\A/replace_table.sql;
+
+Warning: Procedure created with compilation errors.
+
+SQL> connect hr
+Enter password:
+Connected.
+SQL> @E:\A/replace_table.sql;
+
+Procedure created.
+
+SQL> rollback
+  2  rollback
+  3
+SQL> rollback;
+
+Rollback complete.
+
+SQL> select raise_salary from employees;
+select raise_salary from employees
+       *
+ERROR at line 1:
+ORA-00904: "RAISE_SALARY": invalid identifier
+
+
+SQL> select salary from employees;
+
+    SALARY
+----------
+     24000
+     17000
+     17000
+      9000
+      6000
+      4800
+      4800
+      4200
+     12000
+      9000
+      8200
+
+    SALARY
+----------
+      7700
+      7800
+      6900
+     11000
+      3100
+      2900
+      2800
+      2600
+      2500
+      8000
+      8200
+
+    SALARY
+----------
+      7900
+      6500
+      5800
+      3200
+      2700
+      2400
+      2200
+      3300
+      2800
+      2500
+      2100
+
+    SALARY
+----------
+      3300
+      2900
+      2400
+      2200
+      3600
+      3200
+      2700
+      2500
+      3500
+      3100
+      2600
+
+    SALARY
+----------
+      2500
+     14000
+     13500
+     12000
+     11000
+     10500
+     10000
+      9500
+      9000
+      8000
+      7500
+
+    SALARY
+----------
+      7000
+     10000
+      9500
+      9000
+      8000
+      7500
+      7000
+     10500
+      9500
+      7200
+      6800
+
+    SALARY
+----------
+      6400
+      6200
+     11500
+     10000
+      9600
+      7400
+      7300
+      6100
+     11000
+      8800
+      8600
+
+    SALARY
+----------
+      8400
+      7000
+      6200
+      3200
+      3100
+      2500
+      2800
+      4200
+      4100
+      3400
+      3000
+
+    SALARY
+----------
+      3800
+      3600
+      2900
+      2500
+      4000
+      3900
+      3200
+      2800
+      3100
+      3000
+      2600
+
+    SALARY
+----------
+      2600
+      4400
+     13000
+      6000
+      6500
+     10000
+     12000
+      8300
+
+107 rows selected.
+
+SQL> select id, salary from employees;
+select id, salary from employees
+       *
+ERROR at line 1:
+ORA-00904: "ID": invalid identifier
+
+
+SQL> select job_id, salary from employees;
+
+JOB_ID         SALARY
+---------- ----------
+AD_PRES         24000
+AD_VP           17000
+AD_VP           17000
+IT_PROG          9000
+IT_PROG          6000
+IT_PROG          4800
+IT_PROG          4800
+IT_PROG          4200
+FI_MGR          12000
+FI_ACCOUNT       9000
+FI_ACCOUNT       8200
+
+JOB_ID         SALARY
+---------- ----------
+FI_ACCOUNT       7700
+FI_ACCOUNT       7800
+FI_ACCOUNT       6900
+PU_MAN          11000
+PU_CLERK         3100
+PU_CLERK         2900
+PU_CLERK         2800
+PU_CLERK         2600
+PU_CLERK         2500
+ST_MAN           8000
+ST_MAN           8200
+
+JOB_ID         SALARY
+---------- ----------
+ST_MAN           7900
+ST_MAN           6500
+ST_MAN           5800
+ST_CLERK         3200
+ST_CLERK         2700
+ST_CLERK         2400
+ST_CLERK         2200
+ST_CLERK         3300
+ST_CLERK         2800
+ST_CLERK         2500
+ST_CLERK         2100
+
+JOB_ID         SALARY
+---------- ----------
+ST_CLERK         3300
+ST_CLERK         2900
+ST_CLERK         2400
+ST_CLERK         2200
+ST_CLERK         3600
+ST_CLERK         3200
+ST_CLERK         2700
+ST_CLERK         2500
+ST_CLERK         3500
+ST_CLERK         3100
+ST_CLERK         2600
+
+JOB_ID         SALARY
+---------- ----------
+ST_CLERK         2500
+SA_MAN          14000
+SA_MAN          13500
+SA_MAN          12000
+SA_MAN          11000
+SA_MAN          10500
+SA_REP          10000
+SA_REP           9500
+SA_REP           9000
+SA_REP           8000
+SA_REP           7500
+
+JOB_ID         SALARY
+---------- ----------
+SA_REP           7000
+SA_REP          10000
+SA_REP           9500
+SA_REP           9000
+SA_REP           8000
+SA_REP           7500
+SA_REP           7000
+SA_REP          10500
+SA_REP           9500
+SA_REP           7200
+SA_REP           6800
+
+JOB_ID         SALARY
+---------- ----------
+SA_REP           6400
+SA_REP           6200
+SA_REP          11500
+SA_REP          10000
+SA_REP           9600
+SA_REP           7400
+SA_REP           7300
+SA_REP           6100
+SA_REP          11000
+SA_REP           8800
+SA_REP           8600
+
+JOB_ID         SALARY
+---------- ----------
+SA_REP           8400
+SA_REP           7000
+SA_REP           6200
+SH_CLERK         3200
+SH_CLERK         3100
+SH_CLERK         2500
+SH_CLERK         2800
+SH_CLERK         4200
+SH_CLERK         4100
+SH_CLERK         3400
+SH_CLERK         3000
+
+JOB_ID         SALARY
+---------- ----------
+SH_CLERK         3800
+SH_CLERK         3600
+SH_CLERK         2900
+SH_CLERK         2500
+SH_CLERK         4000
+SH_CLERK         3900
+SH_CLERK         3200
+SH_CLERK         2800
+SH_CLERK         3100
+SH_CLERK         3000
+SH_CLERK         2600
+
+JOB_ID         SALARY
+---------- ----------
+SH_CLERK         2600
+AD_ASST          4400
+MK_MAN          13000
+MK_REP           6000
+HR_REP           6500
+PR_REP          10000
+AC_MGR          12000
+AC_ACCOUNT       8300
+
+107 rows selected.
+
+SQL> @E:\A/replace_table.sql;
+
+Procedure created.
+
+SQL> select job_id, salary from employees;
+
+JOB_ID         SALARY
+---------- ----------
+AD_PRES         24000
+AD_VP           17000
+AD_VP           17000
+IT_PROG          9000
+IT_PROG          6000
+IT_PROG          4800
+IT_PROG          4800
+IT_PROG          4200
+FI_MGR          12000
+FI_ACCOUNT       9000
+FI_ACCOUNT       8200
+
+JOB_ID         SALARY
+---------- ----------
+FI_ACCOUNT       7700
+FI_ACCOUNT       7800
+FI_ACCOUNT       6900
+PU_MAN          11000
+PU_CLERK         3100
+PU_CLERK         2900
+PU_CLERK         2800
+PU_CLERK         2600
+PU_CLERK         2500
+ST_MAN           8000
+ST_MAN           8200
+
+JOB_ID         SALARY
+---------- ----------
+ST_MAN           7900
+ST_MAN           6500
+ST_MAN           5800
+ST_CLERK         3200
+ST_CLERK         2700
+ST_CLERK         2400
+ST_CLERK         2200
+ST_CLERK         3300
+ST_CLERK         2800
+ST_CLERK         2500
+ST_CLERK         2100
+
+JOB_ID         SALARY
+---------- ----------
+ST_CLERK         3300
+ST_CLERK         2900
+ST_CLERK         2400
+ST_CLERK         2200
+ST_CLERK         3600
+ST_CLERK         3200
+ST_CLERK         2700
+ST_CLERK         2500
+ST_CLERK         3500
+ST_CLERK         3100
+ST_CLERK         2600
+
+JOB_ID         SALARY
+---------- ----------
+ST_CLERK         2500
+SA_MAN          14000
+SA_MAN          13500
+SA_MAN          12000
+SA_MAN          11000
+SA_MAN          10500
+SA_REP          10000
+SA_REP           9500
+SA_REP           9000
+SA_REP           8000
+SA_REP           7500
+
+JOB_ID         SALARY
+---------- ----------
+SA_REP           7000
+SA_REP          10000
+SA_REP           9500
+SA_REP           9000
+SA_REP           8000
+SA_REP           7500
+SA_REP           7000
+SA_REP          10500
+SA_REP           9500
+SA_REP           7200
+SA_REP           6800
+
+JOB_ID         SALARY
+---------- ----------
+SA_REP           6400
+SA_REP           6200
+SA_REP          11500
+SA_REP          10000
+SA_REP           9600
+SA_REP           7400
+SA_REP           7300
+SA_REP           6100
+SA_REP          11000
+SA_REP           8800
+SA_REP           8600
+
+JOB_ID         SALARY
+---------- ----------
+SA_REP           8400
+SA_REP           7000
+SA_REP           6200
+SH_CLERK         3200
+SH_CLERK         3100
+SH_CLERK         2500
+SH_CLERK         2800
+SH_CLERK         4200
+SH_CLERK         4100
+SH_CLERK         3400
+SH_CLERK         3000
+
+JOB_ID         SALARY
+---------- ----------
+SH_CLERK         3800
+SH_CLERK         3600
+SH_CLERK         2900
+SH_CLERK         2500
+SH_CLERK         4000
+SH_CLERK         3900
+SH_CLERK         3200
+SH_CLERK         2800
+SH_CLERK         3100
+SH_CLERK         3000
+SH_CLERK         2600
+
+JOB_ID         SALARY
+---------- ----------
+SH_CLERK         2600
+AD_ASST          4400
+MK_MAN          13000
+MK_REP           6000
+HR_REP           6500
+PR_REP          10000
+AC_MGR          12000
+AC_ACCOUNT       8300
+
+107 rows selected.
+
+SQL> @E:\A/replace_table.sql;
+
+Procedure created.
+
+SQL> select job_id, raise_salary from employees;
+select job_id, raise_salary from employees
+               *
+ERROR at line 1:
+ORA-00904: "RAISE_SALARY": invalid identifier
+
+
+SQL> select salary from employees;
+
+    SALARY
+----------
+     24000
+     17000
+     17000
+      9000
+      6000
+      4800
+      4800
+      4200
+     12000
+      9000
+      8200
+
+    SALARY
+----------
+      7700
+      7800
+      6900
+     11000
+      3100
+      2900
+      2800
+      2600
+      2500
+      8000
+      8200
+
+    SALARY
+----------
+      7900
+      6500
+      5800
+      3200
+      2700
+      2400
+      2200
+      3300
+      2800
+      2500
+      2100
+
+    SALARY
+----------
+      3300
+      2900
+      2400
+      2200
+      3600
+      3200
+      2700
+      2500
+      3500
+      3100
+      2600
+
+    SALARY
+----------
+      2500
+     14000
+     13500
+     12000
+     11000
+     10500
+     10000
+      9500
+      9000
+      8000
+      7500
+
+    SALARY
+----------
+      7000
+     10000
+      9500
+      9000
+      8000
+      7500
+      7000
+     10500
+      9500
+      7200
+      6800
+
+    SALARY
+----------
+      6400
+      6200
+     11500
+     10000
+      9600
+      7400
+      7300
+      6100
+     11000
+      8800
+      8600
+
+    SALARY
+----------
+      8400
+      7000
+      6200
+      3200
+      3100
+      2500
+      2800
+      4200
+      4100
+      3400
+      3000
+
+    SALARY
+----------
+      3800
+      3600
+      2900
+      2500
+      4000
+      3900
+      3200
+      2800
+      3100
+      3000
+      2600
+
+    SALARY
+----------
+      2600
+      4400
+     13000
+      6000
+      6500
+     10000
+     12000
+      8300
+
+107 rows selected.
+
+SQL> select raise_salary from employees;
+select raise_salary from employees
+       *
+ERROR at line 1:
+ORA-00904: "RAISE_SALARY": invalid identifier
+
+
+SQL> execute raise_salary(176, 10)
+
+PL/SQL procedure successfully completed.
+
+SQL> select employees_id, salary from employees;
+select employees_id, salary from employees
+       *
+ERROR at line 1:
+ORA-00904: "EMPLOYEES_ID": invalid identifier
+
+
+SQL> select employee_id, salary from employees;
+
+EMPLOYEE_ID     SALARY
+----------- ----------
+        100      24000
+        101      17000
+        102      17000
+        103       9000
+        104       6000
+        105       4800
+        106       4800
+        107       4200
+        108      12000
+        109       9000
+        110       8200
+
+EMPLOYEE_ID     SALARY
+----------- ----------
+        111       7700
+        112       7800
+        113       6900
+        114      11000
+        115       3100
+        116       2900
+        117       2800
+        118       2600
+        119       2500
+        120       8000
+        121       8200
+
+EMPLOYEE_ID     SALARY
+----------- ----------
+        122       7900
+        123       6500
+        124       5800
+        125       3200
+        126       2700
+        127       2400
+        128       2200
+        129       3300
+        130       2800
+        131       2500
+        132       2100
+
+EMPLOYEE_ID     SALARY
+----------- ----------
+        133       3300
+        134       2900
+        135       2400
+        136       2200
+        137       3600
+        138       3200
+        139       2700
+        140       2500
+        141       3500
+        142       3100
+        143       2600
+
+EMPLOYEE_ID     SALARY
+----------- ----------
+        144       2500
+        145      14000
+        146      13500
+        147      12000
+        148      11000
+        149      10500
+        150      10000
+        151       9500
+        152       9000
+        153       8000
+        154       7500
+
+EMPLOYEE_ID     SALARY
+----------- ----------
+        155       7000
+        156      10000
+        157       9500
+        158       9000
+        159       8000
+        160       7500
+        161       7000
+        162      10500
+        163       9500
+        164       7200
+        165       6800
+
+EMPLOYEE_ID     SALARY
+----------- ----------
+        166       6400
+        167       6200
+        168      11500
+        169      10000
+        170       9600
+        171       7400
+        172       7300
+        173       6100
+        174      11000
+        175       8800
+        176       9460
+
+EMPLOYEE_ID     SALARY
+----------- ----------
+        177       8400
+        178       7000
+        179       6200
+        180       3200
+        181       3100
+        182       2500
+        183       2800
+        184       4200
+        185       4100
+        186       3400
+        187       3000
+
+EMPLOYEE_ID     SALARY
+----------- ----------
+        188       3800
+        189       3600
+        190       2900
+        191       2500
+        192       4000
+        193       3900
+        194       3200
+        195       2800
+        196       3100
+        197       3000
+        198       2600
+
+EMPLOYEE_ID     SALARY
+----------- ----------
+        199       2600
+        200       4400
+        201      13000
+        202       6000
+        203       6500
+        204      10000
+        205      12000
+        206       8300
+
+107 rows selected.
+
+SQL> rollback;
+
+Rollback complete.
+
+SQL> select employees_id, salary from employees;
+select employees_id, salary from employees
+       *
+ERROR at line 1:
+ORA-00904: "EMPLOYEES_ID": invalid identifier
+
+
+SQL> select employee_id, salary from employees;
+
+EMPLOYEE_ID     SALARY
+----------- ----------
+        100      24000
+        101      17000
+        102      17000
+        103       9000
+        104       6000
+        105       4800
+        106       4800
+        107       4200
+        108      12000
+        109       9000
+        110       8200
+
+EMPLOYEE_ID     SALARY
+----------- ----------
+        111       7700
+        112       7800
+        113       6900
+        114      11000
+        115       3100
+        116       2900
+        117       2800
+        118       2600
+        119       2500
+        120       8000
+        121       8200
+
+EMPLOYEE_ID     SALARY
+----------- ----------
+        122       7900
+        123       6500
+        124       5800
+        125       3200
+        126       2700
+        127       2400
+        128       2200
+        129       3300
+        130       2800
+        131       2500
+        132       2100
+
+EMPLOYEE_ID     SALARY
+----------- ----------
+        133       3300
+        134       2900
+        135       2400
+        136       2200
+        137       3600
+        138       3200
+        139       2700
+        140       2500
+        141       3500
+        142       3100
+        143       2600
+
+EMPLOYEE_ID     SALARY
+----------- ----------
+        144       2500
+        145      14000
+        146      13500
+        147      12000
+        148      11000
+        149      10500
+        150      10000
+        151       9500
+        152       9000
+        153       8000
+        154       7500
+
+EMPLOYEE_ID     SALARY
+----------- ----------
+        155       7000
+        156      10000
+        157       9500
+        158       9000
+        159       8000
+        160       7500
+        161       7000
+        162      10500
+        163       9500
+        164       7200
+        165       6800
+
+EMPLOYEE_ID     SALARY
+----------- ----------
+        166       6400
+        167       6200
+        168      11500
+        169      10000
+        170       9600
+        171       7400
+        172       7300
+        173       6100
+        174      11000
+        175       8800
+        176       8600
+
+EMPLOYEE_ID     SALARY
+----------- ----------
+        177       8400
+        178       7000
+        179       6200
+        180       3200
+        181       3100
+        182       2500
+        183       2800
+        184       4200
+        185       4100
+        186       3400
+        187       3000
+
+EMPLOYEE_ID     SALARY
+----------- ----------
+        188       3800
+        189       3600
+        190       2900
+        191       2500
+        192       4000
+        193       3900
+        194       3200
+        195       2800
+        196       3100
+        197       3000
+        198       2600
+
+EMPLOYEE_ID     SALARY
+----------- ----------
+        199       2600
+        200       4400
+        201      13000
+        202       6000
+        203       6500
+        204      10000
+        205      12000
+        206       8300
+
+107 rows selected.
+
+SQL> @E:\A/query_emp.sql;
+
+Warning: Procedure created with compilation errors.
+
+SQL> @E:\A/query_emp.sql;
+
+Procedure created.
+
+SQL> set serveroutput on;
+SQL> @E:\A/declear.sql;
+SP2-0310: unable to open file "E:\A/declear.sql"
+SQL> @E:\A/delcare.sql;
+    v_emp_sal employee.salary%type;
+              *
+ERROR at line 3:
+ORA-06550: line 3, column 15:
+PLS-00201: identifier 'EMPLOYEE.SALARY' must be declared
+ORA-06550: line 3, column 15:
+PL/SQL: Item ignored
+ORA-06550: line 5, column 33:
+PLS-00320: the declaration of the type of this expression is incomplete or
+malformed
+ORA-06550: line 5, column 5:
+PL/SQL: Statement ignored
+ORA-06550: line 6, column 51:
+PLS-00320: the declaration of the type of this expression is incomplete or
+malformed
+ORA-06550: line 6, column 5:
+PL/SQL: Statement ignored
+
+
+SQL> @E:\A/delcare.sql;
+Smithearns7400   $7,400.00
+
+PL/SQL procedure successfully completed.
+
+SQL> @E:\A/circle.sql;
+
+Warning: Procedure created with compilation errors.
+
+SQL> execute raise_salary( 10)
+BEGIN raise_salary( 10); END;
+
+      *
+ERROR at line 1:
+ORA-06550: line 1, column 7:
+PLS-00306: wrong number or types of arguments in call to 'RAISE_SALARY'
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+
+
+SQL> execute circle_area( 10)
+BEGIN circle_area( 10); END;
+
+      *
+ERROR at line 1:
+ORA-06550: line 1, column 7:
+PLS-00905: object HR.CIRCLE_AREA is invalid
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+
+
+SQL> execute circle_area(10)
+BEGIN circle_area(10); END;
+
+      *
+ERROR at line 1:
+ORA-06550: line 1, column 7:
+PLS-00905: object HR.CIRCLE_AREA is invalid
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+
+
+SQL> @E:\A/circle.sql;
+
+Warning: Procedure created with compilation errors.
+
+SQL> @E:\A/circle.sql;
+
+Warning: Procedure created with compilation errors.
+
+SQL> @E:\A/circle.sql;
+
+Warning: Procedure created with compilation errors.
+
+SQL> @E:\A/circle.sql;
+
+Warning: Procedure created with compilation errors.
+
+SQL> @E:\A/circle.sql;
+
+Warning: Procedure created with compilation errors.
+
+SQL> @E:\A/circle.sql;
+
+Warning: Procedure created with compilation errors.
+
+SQL> @E:\A/circle.sql;
+
+Warning: Procedure created with compilation errors.
+
+SQL> @E:\A/circle.sql;
+
+Warning: Procedure created with compilation errors.
+
+SQL> @E:\A/circle.sql;
+    dbms_output.put_line('Area:' || v_area));
+                                           *
+ERROR at line 6:
+ORA-06550: line 6, column 44:
+PLS-00103: Encountered the symbol ")" when expecting one of the following:
+:= . ( % ;
+The symbol "(" was substituted for ")" to continue.
+
+
+SQL> @E:\A/circle.sql;
+    dbms_output.put_line('Area:' || v_area));
+                                           *
+ERROR at line 6:
+ORA-06550: line 6, column 44:
+PLS-00103: Encountered the symbol ")" when expecting one of the following:
+:= . ( % ;
+The symbol "(" was substituted for ")" to continue.
+
+
+SQL> @E:\A/circle.sql;
+Area:78.54
+
+PL/SQL procedure successfully completed.
+
+SQL> @E:\A/print.sql;
+    cal_salary (171, v_emp_name, v_emp_sal);
+    *
+ERROR at line 5:
+ORA-06550: line 5, column 5:
+PLS-00201: identifier 'CAL_SALARY' must be declared
+ORA-06550: line 5, column 5:
+PL/SQL: Statement ignored
+
+
+SQL> @E:\A/circle2.sql;
+
+Warning: Procedure created with compilation errors.
+
+SQL> @E:\A/print.sql;
+    cal_salary (171, v_emp_name, v_emp_sal);
+    *
+ERROR at line 5:
+ORA-06550: line 5, column 5:
+PLS-00905: object HR.CAL_SALARY is invalid
+ORA-06550: line 5, column 5:
+PL/SQL: Statement ignored
+
+
+SQL> execute circle2(10)
+BEGIN circle2(10); END;
+
+      *
+ERROR at line 1:
+ORA-06550: line 1, column 7:
+PLS-00201: identifier 'CIRCLE2' must be declared
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+
+
+SQL> execute circle2(10);
+BEGIN circle2(10); END;
+
+      *
+ERROR at line 1:
+ORA-06550: line 1, column 7:
+PLS-00201: identifier 'CIRCLE2' must be declared
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+
+
+SQL> @E:\A/print.sql;
+    cal_salary (171, v_emp_name, v_emp_sal);
+    *
+ERROR at line 5:
+ORA-06550: line 5, column 5:
+PLS-00905: object HR.CAL_SALARY is invalid
+ORA-06550: line 5, column 5:
+PL/SQL: Statement ignored
+
+
+SQL> @E:\A/print.sql;
+    cal_salary (171, v_emp_name, v_emp_sal);
+    *
+ERROR at line 5:
+ORA-06550: line 5, column 5:
+PLS-00905: object HR.CAL_SALARY is invalid
+ORA-06550: line 5, column 5:
+PL/SQL: Statement ignored
+
+
+SQL> @E:\A/circle2.sql;
+
+Procedure created.
+
+SQL> @E:\A/print.sql;
+Taylorsalary123840 $123,840.00
+
+PL/SQL procedure successfully completed.
+
+SQL> @E:\A/format.sql;
+
+Procedure created.
+
+SQL> @E:\A/print_procedure.sql;
+SP2-0310: unable to open file "E:\A/print_procedure.sql"
+SQL> @E:\A/print2.sql;
+    v_phone varchar2;
+            *
+ERROR at line 2:
+ORA-06550: line 2, column 13:
+PLS-00215: String length constraints must be in range (1 .. 32767)
+ORA-06550: line 4, column 21:
+PLS-00363: expression '8006330575' cannot be used as an assignment target
+ORA-06550: line 4, column 5:
+PL/SQL: Statement ignored
+
+
+SQL> @E:\A/print2.sql;
+    v_phone varchar2;
+            *
+ERROR at line 2:
+ORA-06550: line 2, column 13:
+PLS-00215: String length constraints must be in range (1 .. 32767)
+ORA-06550: line 4, column 21:
+PLS-00363: expression '8006330575' cannot be used as an assignment target
+ORA-06550: line 4, column 5:
+PL/SQL: Statement ignored
+
+
+SQL> @E:\A/format.sql;
+
+Procedure created.
+
+SQL> @E:\A/print2.sql;
+    v_phone varchar2;
+            *
+ERROR at line 2:
+ORA-06550: line 2, column 13:
+PLS-00215: String length constraints must be in range (1 .. 32767)
+ORA-06550: line 4, column 21:
+PLS-00363: expression '8006330575' cannot be used as an assignment target
+ORA-06550: line 4, column 5:
+PL/SQL: Statement ignored
+
+
+SQL> @E:\A/print2.sql;
+    v_phone varchar2;
+            *
+ERROR at line 2:
+ORA-06550: line 2, column 13:
+PLS-00215: String length constraints must be in range (1 .. 32767)
+
+
+SQL> @E:\A/print2.sql;
+    v_phone varchar2;
+            *
+ERROR at line 2:
+ORA-06550: line 2, column 13:
+PLS-00215: String length constraints must be in range (1 .. 32767)
+
+
+SQL> @E:\A/print2.sql;
+    v_phone varchar;
+            *
+ERROR at line 2:
+ORA-06550: line 2, column 13:
+PLS-00215: String length constraints must be in range (1 .. 32767)
+
+
+SQL> @E:\A/print2.sql;
+    v_phone varchar;
+            *
+ERROR at line 2:
+ORA-06550: line 2, column 13:
+PLS-00215: String length constraints must be in range (1 .. 32767)
+ORA-06550: line 5, column 5:
+PLS-00306: wrong number or types of arguments in call to 'FORMAT_PHONE_NO'
+ORA-06550: line 5, column 5:
+PL/SQL: Statement ignored
+
+
+SQL> @E:\A/print2.sql;
+    v_phone varchar;
+            *
+ERROR at line 2:
+ORA-06550: line 2, column 13:
+PLS-00215: String length constraints must be in range (1 .. 32767)
+
+
+SQL> @E:\A/print2.sql;
+    v_phone varchar;
+            *
+ERROR at line 2:
+ORA-06550: line 2, column 13:
+PLS-00215: String length constraints must be in range (1 .. 32767)
+ORA-06550: line 4, column 21:
+PLS-00363: expression '8006330575' cannot be used as an assignment target
+ORA-06550: line 4, column 5:
+PL/SQL: Statement ignored
+
+
+SQL> @E:\A/print2.sql;
+    v_phone varchar;
+            *
+ERROR at line 2:
+ORA-06550: line 2, column 13:
+PLS-00215: String length constraints must be in range (1 .. 32767)
+ORA-06550: line 4, column 21:
+PLS-00363: expression '8006330575' cannot be used as an assignment target
+ORA-06550: line 4, column 5:
+PL/SQL: Statement ignored
+
+
+SQL> @E:\A/print2.sql;
+    v_phone varchar2;
+            *
+ERROR at line 2:
+ORA-06550: line 2, column 13:
+PLS-00215: String length constraints must be in range (1 .. 32767)
+ORA-06550: line 4, column 21:
+PLS-00363: expression '8006330575' cannot be used as an assignment target
+ORA-06550: line 4, column 5:
+PL/SQL: Statement ignored
+
+
+SQL> @E:\A/print2.sql;
+    v_phone varchar2;
+            *
+ERROR at line 2:
+ORA-06550: line 2, column 13:
+PLS-00215: String length constraints must be in range (1 .. 32767)
+ORA-06550: line 4, column 5:
+PLS-00306: wrong number or types of arguments in call to 'FORMAT_PHONE_NO'
+ORA-06550: line 4, column 5:
+PL/SQL: Statement ignored
+
+
+SQL> @E:\A/print2.sql;
+    v_phone varchar2;
+            *
+ERROR at line 2:
+ORA-06550: line 2, column 13:
+PLS-00215: String length constraints must be in range (1 .. 32767)
+ORA-06550: line 4, column 5:
+PLS-00306: wrong number or types of arguments in call to 'FORMAT_PHONE_NO'
+ORA-06550: line 4, column 5:
+PL/SQL: Statement ignored
+
+
+SQL> @E:\A/print2.sql;
+    v_phone varchar2;
+            *
+ERROR at line 2:
+ORA-06550: line 2, column 13:
+PLS-00215: String length constraints must be in range (1 .. 32767)
+ORA-06550: line 4, column 5:
+PLS-00306: wrong number or types of arguments in call to 'FORMAT_PHONE_NO'
+ORA-06550: line 4, column 5:
+PL/SQL: Statement ignored
+
+
+SQL> @E:\A/print2.sql;
+    format_phone_no('8006330575', v_phone);
+    *
+ERROR at line 4:
+ORA-06550: line 4, column 5:
+PLS-00306: wrong number or types of arguments in call to 'FORMAT_PHONE_NO'
+ORA-06550: line 4, column 5:
+PL/SQL: Statement ignored
+
+
+SQL> @E:\A/print2.sql;
+    format_phone_no(8006330575);
+                    *
+ERROR at line 4:
+ORA-06550: line 4, column 21:
+PLS-00363: expression '8006330575' cannot be used as an assignment target
+ORA-06550: line 4, column 5:
+PL/SQL: Statement ignored
+
+
+SQL> @E:\A/print2.sql;
+    format_phone_no('8006330575');
+                    *
+ERROR at line 4:
+ORA-06550: line 4, column 21:
+PLS-00363: expression '8006330575' cannot be used as an assignment target
+ORA-06550: line 4, column 5:
+PL/SQL: Statement ignored
+
+
+SQL> @E:\A/print2.sql;
+    format_phone_no('8006330575', v_phone);
+    *
+ERROR at line 4:
+ORA-06550: line 4, column 5:
+PLS-00306: wrong number or types of arguments in call to 'FORMAT_PHONE_NO'
+ORA-06550: line 4, column 5:
+PL/SQL: Statement ignored
+
+
+SQL> @E:\A/print2.sql;
+()-
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on;
+SQL> @E:\A/print2.sql;
+()-
+
+PL/SQL procedure successfully completed.
+
+SQL> @E:\A/print2.sql;
+    format_phone_no(v_phone);
+    *
+ERROR at line 5:
+ORA-06550: line 5, column 5:
+PLS-00103: Encountered the symbol "FORMAT_PHONE_NO" when expecting one of the
+following:
+* & = - + ; < / > at in is mod remainder not rem
+<an exponent (**)> <> or != or ~= >= <= <> and or like LIKE2_
+LIKE4_ LIKEC_ between || multiset member SUBMULTISET_
+The symbol "*" was substituted for "FORMAT_PHONE_NO" to continue.
+
+
+SQL> @E:\A/print2.sql;
+(800)633-0575
+
+PL/SQL procedure successfully completed.
+
+SQL> @E:\A/print2.sql;
+(800)633-0575
+
+PL/SQL procedure successfully completed.
+
+SQL>

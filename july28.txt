@@ -1,0 +1,395 @@
+SQL*Plus: Release 10.2.0.1.0 - Production on Wed Aug 9 10:40:27 2023
+
+Copyright (c) 1982, 2005, Oracle.  All rights reserved.
+
+SQL> connect iit
+Enter password:
+Connected.
+SQL> select * from tab;
+
+TNAME                          TABTYPE  CLUSTERID
+------------------------------ ------- ----------
+BRANCH                         TABLE
+CUSTOMER                       TABLE
+LOAN                           TABLE
+BORROWER                       TABLE
+ACCOUNT                        TABLE
+DEPOSITOR                      TABLE
+
+6 rows selected.
+
+SQL> select T.loan_number, S.customer_name from loan as T, borrower as S;
+select T.loan_number, S.customer_name from loan as T, borrower as S
+                                                *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> select T.loan_number, S.customer_name from loan as T, borrower as S where T.loan_number = S.loan_number;
+select T.loan_number, S.customer_name from loan as T, borrower as S where T.loan_number = S.loan_number
+                                                *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> @E:\A/droptable.txt
+
+Table dropped.
+
+
+Table dropped.
+
+
+Table dropped.
+
+
+Table dropped.
+
+
+Table dropped.
+
+
+Table dropped.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+SQL> select T.loan_number, S.customer_name from loan as T, borrower as S;
+select T.loan_number, S.customer_name from loan as T, borrower as S
+                                                *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> select customer_name,T.loan_number, S.customer_name from loan as T, borrower as S;
+select customer_name,T.loan_number, S.customer_name from loan as T, borrower as S
+                                                              *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> select branch_name, T.loan_number, S.customer_name from loan as T, borrower as S;
+select branch_name, T.loan_number, S.customer_name from loan as T, borrower as S
+                                                             *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> select branch_name, T.loan_number, S.customer_name from loan as T, borrower as S;
+select branch_name, T.loan_number, S.customer_name from loan as T, borrower as S
+                                                             *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> select customer_name, T.loan_number, S.amount           from borrower as T, loan as S           where  T.loan_number = S.loan_number
+  2
+SQL> select customer_name, T.loan_number, S.ammount from borrower as T, loan
+ as S;
+select customer_name, T.loan_number, S.ammount from borrower as T, loan as S
+                                                             *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> select customer_name, T.loan_number, S.ammount from borrower as T, loan as S where T.loan_number = S.loan_number;
+select customer_name, T.loan_number, S.ammount from borrower as T, loan as S where T.loan_number = S.loan_number
+                                                             *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> select customer_name, T.loan_number, S.ammount from borrower as T, loan as S where T.loan_number = S.loan_number;
+select customer_name, T.loan_number, S.ammount from borrower as T, loan as S where T.loan_number = S.loan_number
+                                                             *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> select customer_name, T.loan_number, S.ammount from borrower T, loan S where T.loan_number = S.loan_number;
+select customer_name, T.loan_number, S.ammount from borrower T, loan S where T.loan_number = S.loan_number
+                                     *
+ERROR at line 1:
+ORA-00904: "S"."AMMOUNT": invalid identifier
+
+
+SQL> select customer_name, T.loan_number, S.amount from borrower T, loan S where T.loan_number = S.loan_number;
+
+CUSTOMER_NAME
+---------------------------------------------------------------------------
+LOAN_NUMBE     AMOUNT
+---------- ----------
+Adams
+L-16             1300
+
+Curry
+L-93              500
+
+Hayes
+L-15             1500
+
+
+CUSTOMER_NAME
+---------------------------------------------------------------------------
+LOAN_NUMBE     AMOUNT
+---------- ----------
+Johnson
+L-14             1500
+
+Jones
+L-17             1000
+
+Smith
+L-11              900
+
+
+CUSTOMER_NAME
+---------------------------------------------------------------------------
+LOAN_NUMBE     AMOUNT
+---------- ----------
+Smith
+L-23             2000
+
+Williams
+L-17             1000
+
+
+8 rows selected.
+
+SQL> select customer_name from customer where customer_street like '%Main%';
+
+
+CUSTOMER_NAME
+---------------------------------------------------------------------------
+Hayes
+Jones
+
+SQL> select customer_name from borrower, loan where borrower.loan_number = l
+oan.loan_number and branch_name = 'Perryride' order by customer_name;
+
+no rows selected
+
+SQL> select customer_name from borrower, loan where borrower.loan_number = loan.loan_number and branch_name = 'Perryridge' order by customer_name;
+
+CUSTOMER_NAME
+---------------------------------------------------------------------------
+Adams
+Hayes
+
+SQL> select distinct customer_name from borrower, loan where borrower.loan_number = loan.loan_number and branch_name = 'Perryridge' order by customer_name;
+
+CUSTOMER_NAME
+---------------------------------------------------------------------------
+Adams
+Hayes
+
+SQL> select customer_name from depositor union select customer_name from bor
+rower;
+
+CUSTOMER_NAME
+---------------------------------------------------------------------------
+Adams
+Curry
+Hayes
+Johnson
+Jones
+Lindsay
+Smith
+Turner
+Williams
+
+9 rows selected.
+
+SQL> select customer_name from depositor intersect select customer_name from borrower;
+
+CUSTOMER_NAME
+---------------------------------------------------------------------------
+Hayes
+Johnson
+Jones
+Smith
+
+SQL> select customer_name from depositor except select customer_name from borrower;
+select customer_name from depositor except select customer_name from borrower
+                                           *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> (select customer_name from depositor) except (select customer_name from borrower);
+(select customer_name from depositor) except (select customer_name from borrower)
+                                      *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> (select customer_name from depositor) minus (select customer_name from borrower);
+
+CUSTOMER_NAME
+---------------------------------------------------------------------------
+Lindsay
+Turner
+
+SQL>

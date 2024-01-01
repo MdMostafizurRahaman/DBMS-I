@@ -1,0 +1,1 @@
+select last_name,salary, 12*salary+12*salary*nvl(commission_pct,0) "Annual" from employees;

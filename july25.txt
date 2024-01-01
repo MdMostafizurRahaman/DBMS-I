@@ -1,0 +1,2535 @@
+
+SQL*Plus: Release 10.2.0.1.0 - Production on Tue Jul 25 14:18:36 2023
+
+Copyright (c) 1982, 2005, Oracle.  All rights reserved.
+
+SQL> connect system
+Enter password:
+Connected.
+SQL> alter user hr identified by hr;
+
+User altered.
+
+SQL> connect hr
+Enter password:
+Connected.
+SQL> describe departments;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DEPARTMENT_ID                             NOT NULL NUMBER(4)
+ DEPARTMENT_NAME                           NOT NULL VARCHAR2(30)
+ MANAGER_ID                                         NUMBER(6)
+ LOCATION_ID                                        NUMBER(4)
+
+SQL> select department_name from departments;
+
+DEPARTMENT_NAME
+------------------------------
+Administration
+Marketing
+Purchasing
+Human Resources
+Shipping
+IT
+Public Relations
+Sales
+Executive
+Finance
+Accounting
+
+DEPARTMENT_NAME
+------------------------------
+Treasury
+Corporate Tax
+Control And Credit
+Shareholder Services
+Benefits
+Manufacturing
+Construction
+Contracting
+Operations
+IT Support
+NOC
+
+DEPARTMENT_NAME
+------------------------------
+IT Helpdesk
+Government Sales
+Retail Sales
+Recruiting
+Payroll
+
+27 rows selected.
+
+SQL> select department_id from departments;
+
+DEPARTMENT_ID
+-------------
+           10
+           20
+           30
+           40
+           50
+           60
+           70
+           80
+           90
+          100
+          110
+
+DEPARTMENT_ID
+-------------
+          120
+          130
+          140
+          150
+          160
+          170
+          180
+          190
+          200
+          210
+          220
+
+DEPARTMENT_ID
+-------------
+          230
+          240
+          250
+          260
+          270
+
+27 rows selected.
+
+SQL> describe employees;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPLOYEE_ID                               NOT NULL NUMBER(6)
+ FIRST_NAME                                         VARCHAR2(20)
+ LAST_NAME                                 NOT NULL VARCHAR2(25)
+ EMAIL                                     NOT NULL VARCHAR2(25)
+ PHONE_NUMBER                                       VARCHAR2(20)
+ HIRE_DATE                                 NOT NULL DATE
+ JOB_ID                                    NOT NULL VARCHAR2(10)
+ SALARY                                             NUMBER(8,2)
+ COMMISSION_PCT                                     NUMBER(2,2)
+ MANAGER_ID                                         NUMBER(6)
+ DEPARTMENT_ID                                      NUMBER(4)
+
+SQL> @E:\A\class.sql;
+select employee_id, last_name, from employees
+                               *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> @E:\A\class.sql;
+select employee_id, last_name, from employees
+                               *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> @E:\A\class.sql;
+where order by employee_id and 12*salary+12*salary*nvl(commission_pct,0)
+      *
+ERROR at line 2:
+ORA-00936: missing expression
+
+
+SQL> @E:\A\class.sql;
+ order by employee_id and 12*salary+12*salary*nvl(commission_pct,0)
+                      *
+ERROR at line 2:
+ORA-00933: SQL command not properly ended
+
+
+SQL> @E:\A\class.sql;
+order by employee_id, Annual
+                      *
+ERROR at line 2:
+ORA-00904: "ANNUAL": invalid identifier
+
+
+SQL> @E:\A\class.sql;
+order by employee_id, Annual
+                      *
+ERROR at line 2:
+ORA-00904: "ANNUAL": invalid identifier
+
+
+SQL> @E:\A\class.sql;
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL
+----------- ------------------------- ----------
+        100 King                          288000
+        101 Kochhar                       204000
+        102 De Haan                       204000
+        103 Hunold                        108000
+        104 Ernst                          72000
+        105 Austin                         57600
+        106 Pataballa                      57600
+        107 Lorentz                        50400
+        108 Greenberg                     144000
+        109 Faviet                        108000
+        110 Chen                           98400
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL
+----------- ------------------------- ----------
+        111 Sciarra                        92400
+        112 Urman                          93600
+        113 Popp                           82800
+        114 Raphaely                      132000
+        115 Khoo                           37200
+        116 Baida                          34800
+        117 Tobias                         33600
+        118 Himuro                         31200
+        119 Colmenares                     30000
+        120 Weiss                          96000
+        121 Fripp                          98400
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL
+----------- ------------------------- ----------
+        122 Kaufling                       94800
+        123 Vollman                        78000
+        124 Mourgos                        69600
+        125 Nayer                          38400
+        126 Mikkilineni                    32400
+        127 Landry                         28800
+        128 Markle                         26400
+        129 Bissot                         39600
+        130 Atkinson                       33600
+        131 Marlow                         30000
+        132 Olson                          25200
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL
+----------- ------------------------- ----------
+        133 Mallin                         39600
+        134 Rogers                         34800
+        135 Gee                            28800
+        136 Philtanker                     26400
+        137 Ladwig                         43200
+        138 Stiles                         38400
+        139 Seo                            32400
+        140 Patel                          30000
+        141 Rajs                           42000
+        142 Davies                         37200
+        143 Matos                          31200
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL
+----------- ------------------------- ----------
+        144 Vargas                         30000
+        145 Russell                       235200
+        146 Partners                      210600
+        147 Errazuriz                     187200
+        148 Cambrault                     171600
+        149 Zlotkey                       151200
+        150 Tucker                        156000
+        151 Bernstein                     142500
+        152 Hall                          135000
+        153 Olsen                         115200
+        154 Cambrault                     108000
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL
+----------- ------------------------- ----------
+        155 Tuvault                        96600
+        156 King                          162000
+        157 Sully                         153900
+        158 McEwen                        145800
+        159 Smith                         124800
+        160 Doran                         117000
+        161 Sewall                        105000
+        162 Vishney                       157500
+        163 Greene                        131100
+        164 Marvins                        95040
+        165 Lee                            89760
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL
+----------- ------------------------- ----------
+        166 Ande                           84480
+        167 Banda                          81840
+        168 Ozer                          172500
+        169 Bloom                         144000
+        170 Fox                           138240
+        171 Smith                         102120
+        172 Bates                         100740
+        173 Kumar                          80520
+        174 Abel                          171600
+        175 Hutton                        132000
+        176 Taylor                        123840
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL
+----------- ------------------------- ----------
+        177 Livingston                    120960
+        178 Grant                          96600
+        179 Johnson                        81840
+        180 Taylor                         38400
+        181 Fleaur                         37200
+        182 Sullivan                       30000
+        183 Geoni                          33600
+        184 Sarchand                       50400
+        185 Bull                           49200
+        186 Dellinger                      40800
+        187 Cabrio                         36000
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL
+----------- ------------------------- ----------
+        188 Chung                          45600
+        189 Dilly                          43200
+        190 Gates                          34800
+        191 Perkins                        30000
+        192 Bell                           48000
+        193 Everett                        46800
+        194 McCain                         38400
+        195 Jones                          33600
+        196 Walsh                          37200
+        197 Feeney                         36000
+        198 OConnell                       31200
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL
+----------- ------------------------- ----------
+        199 Grant                          31200
+        200 Whalen                         52800
+        201 Hartstein                     156000
+        202 Fay                            72000
+        203 Mavris                         78000
+        204 Baer                          120000
+        205 Higgins                       144000
+        206 Gietz                          99600
+
+107 rows selected.
+
+SQL> @E:\A\class.sql;
+order by employee_id, Annual ase
+                             *
+ERROR at line 2:
+ORA-00933: SQL command not properly ended
+
+
+SQL> @E:\A\class.sql;
+order by employee_id, Annual AES
+                             *
+ERROR at line 2:
+ORA-00933: SQL command not properly ended
+
+
+SQL> @E:\A\class.sql;
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL
+----------- ------------------------- ----------
+        100 King                          288000
+        101 Kochhar                       204000
+        102 De Haan                       204000
+        103 Hunold                        108000
+        104 Ernst                          72000
+        105 Austin                         57600
+        106 Pataballa                      57600
+        107 Lorentz                        50400
+        108 Greenberg                     144000
+        109 Faviet                        108000
+        110 Chen                           98400
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL
+----------- ------------------------- ----------
+        111 Sciarra                        92400
+        112 Urman                          93600
+        113 Popp                           82800
+        114 Raphaely                      132000
+        115 Khoo                           37200
+        116 Baida                          34800
+        117 Tobias                         33600
+        118 Himuro                         31200
+        119 Colmenares                     30000
+        120 Weiss                          96000
+        121 Fripp                          98400
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL
+----------- ------------------------- ----------
+        122 Kaufling                       94800
+        123 Vollman                        78000
+        124 Mourgos                        69600
+        125 Nayer                          38400
+        126 Mikkilineni                    32400
+        127 Landry                         28800
+        128 Markle                         26400
+        129 Bissot                         39600
+        130 Atkinson                       33600
+        131 Marlow                         30000
+        132 Olson                          25200
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL
+----------- ------------------------- ----------
+        133 Mallin                         39600
+        134 Rogers                         34800
+        135 Gee                            28800
+        136 Philtanker                     26400
+        137 Ladwig                         43200
+        138 Stiles                         38400
+        139 Seo                            32400
+        140 Patel                          30000
+        141 Rajs                           42000
+        142 Davies                         37200
+        143 Matos                          31200
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL
+----------- ------------------------- ----------
+        144 Vargas                         30000
+        145 Russell                       235200
+        146 Partners                      210600
+        147 Errazuriz                     187200
+        148 Cambrault                     171600
+        149 Zlotkey                       151200
+        150 Tucker                        156000
+        151 Bernstein                     142500
+        152 Hall                          135000
+        153 Olsen                         115200
+        154 Cambrault                     108000
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL
+----------- ------------------------- ----------
+        155 Tuvault                        96600
+        156 King                          162000
+        157 Sully                         153900
+        158 McEwen                        145800
+        159 Smith                         124800
+        160 Doran                         117000
+        161 Sewall                        105000
+        162 Vishney                       157500
+        163 Greene                        131100
+        164 Marvins                        95040
+        165 Lee                            89760
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL
+----------- ------------------------- ----------
+        166 Ande                           84480
+        167 Banda                          81840
+        168 Ozer                          172500
+        169 Bloom                         144000
+        170 Fox                           138240
+        171 Smith                         102120
+        172 Bates                         100740
+        173 Kumar                          80520
+        174 Abel                          171600
+        175 Hutton                        132000
+        176 Taylor                        123840
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL
+----------- ------------------------- ----------
+        177 Livingston                    120960
+        178 Grant                          96600
+        179 Johnson                        81840
+        180 Taylor                         38400
+        181 Fleaur                         37200
+        182 Sullivan                       30000
+        183 Geoni                          33600
+        184 Sarchand                       50400
+        185 Bull                           49200
+        186 Dellinger                      40800
+        187 Cabrio                         36000
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL
+----------- ------------------------- ----------
+        188 Chung                          45600
+        189 Dilly                          43200
+        190 Gates                          34800
+        191 Perkins                        30000
+        192 Bell                           48000
+        193 Everett                        46800
+        194 McCain                         38400
+        195 Jones                          33600
+        196 Walsh                          37200
+        197 Feeney                         36000
+        198 OConnell                       31200
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL
+----------- ------------------------- ----------
+        199 Grant                          31200
+        200 Whalen                         52800
+        201 Hartstein                     156000
+        202 Fay                            72000
+        203 Mavris                         78000
+        204 Baer                          120000
+        205 Higgins                       144000
+        206 Gietz                          99600
+
+107 rows selected.
+
+SQL> @E:\A\class.sql;
+
+DEPARTMENT_ID LAST_NAME                     ANNUAL
+------------- ------------------------- ----------
+           90 King                          288000
+           90 Kochhar                       204000
+           90 De Haan                       204000
+           60 Hunold                        108000
+           60 Ernst                          72000
+           60 Austin                         57600
+           60 Pataballa                      57600
+           60 Lorentz                        50400
+          100 Greenberg                     144000
+          100 Faviet                        108000
+          100 Chen                           98400
+
+DEPARTMENT_ID LAST_NAME                     ANNUAL
+------------- ------------------------- ----------
+          100 Sciarra                        92400
+          100 Urman                          93600
+          100 Popp                           82800
+           30 Raphaely                      132000
+           30 Khoo                           37200
+           30 Baida                          34800
+           30 Tobias                         33600
+           30 Himuro                         31200
+           30 Colmenares                     30000
+           50 Weiss                          96000
+           50 Fripp                          98400
+
+DEPARTMENT_ID LAST_NAME                     ANNUAL
+------------- ------------------------- ----------
+           50 Kaufling                       94800
+           50 Vollman                        78000
+           50 Mourgos                        69600
+           50 Nayer                          38400
+           50 Mikkilineni                    32400
+           50 Landry                         28800
+           50 Markle                         26400
+           50 Bissot                         39600
+           50 Atkinson                       33600
+           50 Marlow                         30000
+           50 Olson                          25200
+
+DEPARTMENT_ID LAST_NAME                     ANNUAL
+------------- ------------------------- ----------
+           50 Mallin                         39600
+           50 Rogers                         34800
+           50 Gee                            28800
+           50 Philtanker                     26400
+           50 Ladwig                         43200
+           50 Stiles                         38400
+           50 Seo                            32400
+           50 Patel                          30000
+           50 Rajs                           42000
+           50 Davies                         37200
+           50 Matos                          31200
+
+DEPARTMENT_ID LAST_NAME                     ANNUAL
+------------- ------------------------- ----------
+           50 Vargas                         30000
+           80 Russell                       235200
+           80 Partners                      210600
+           80 Errazuriz                     187200
+           80 Cambrault                     171600
+           80 Zlotkey                       151200
+           80 Tucker                        156000
+           80 Bernstein                     142500
+           80 Hall                          135000
+           80 Olsen                         115200
+           80 Cambrault                     108000
+
+DEPARTMENT_ID LAST_NAME                     ANNUAL
+------------- ------------------------- ----------
+           80 Tuvault                        96600
+           80 King                          162000
+           80 Sully                         153900
+           80 McEwen                        145800
+           80 Smith                         124800
+           80 Doran                         117000
+           80 Sewall                        105000
+           80 Vishney                       157500
+           80 Greene                        131100
+           80 Marvins                        95040
+           80 Lee                            89760
+
+DEPARTMENT_ID LAST_NAME                     ANNUAL
+------------- ------------------------- ----------
+           80 Ande                           84480
+           80 Banda                          81840
+           80 Ozer                          172500
+           80 Bloom                         144000
+           80 Fox                           138240
+           80 Smith                         102120
+           80 Bates                         100740
+           80 Kumar                          80520
+           80 Abel                          171600
+           80 Hutton                        132000
+           80 Taylor                        123840
+
+DEPARTMENT_ID LAST_NAME                     ANNUAL
+------------- ------------------------- ----------
+           80 Livingston                    120960
+              Grant                          96600
+           80 Johnson                        81840
+           50 Taylor                         38400
+           50 Fleaur                         37200
+           50 Sullivan                       30000
+           50 Geoni                          33600
+           50 Sarchand                       50400
+           50 Bull                           49200
+           50 Dellinger                      40800
+           50 Cabrio                         36000
+
+DEPARTMENT_ID LAST_NAME                     ANNUAL
+------------- ------------------------- ----------
+           50 Chung                          45600
+           50 Dilly                          43200
+           50 Gates                          34800
+           50 Perkins                        30000
+           50 Bell                           48000
+           50 Everett                        46800
+           50 McCain                         38400
+           50 Jones                          33600
+           50 Walsh                          37200
+           50 Feeney                         36000
+           50 OConnell                       31200
+
+DEPARTMENT_ID LAST_NAME                     ANNUAL
+------------- ------------------------- ----------
+           50 Grant                          31200
+           10 Whalen                         52800
+           20 Hartstein                     156000
+           20 Fay                            72000
+           40 Mavris                         78000
+           70 Baer                          120000
+          110 Higgins                       144000
+          110 Gietz                          99600
+
+107 rows selected.
+
+SQL> @E:\A\class.sql;
+
+DEPARTMENT_ID LAST_NAME                     ANNUAL
+------------- ------------------------- ----------
+           90 King                          288000
+           90 Kochhar                       204000
+           90 De Haan                       204000
+           60 Hunold                        108000
+           60 Ernst                          72000
+           60 Austin                         57600
+           60 Pataballa                      57600
+           60 Lorentz                        50400
+          100 Greenberg                     144000
+          100 Faviet                        108000
+          100 Chen                           98400
+
+DEPARTMENT_ID LAST_NAME                     ANNUAL
+------------- ------------------------- ----------
+          100 Sciarra                        92400
+          100 Urman                          93600
+          100 Popp                           82800
+           30 Raphaely                      132000
+           30 Khoo                           37200
+           30 Baida                          34800
+           30 Tobias                         33600
+           30 Himuro                         31200
+           30 Colmenares                     30000
+           50 Weiss                          96000
+           50 Fripp                          98400
+
+DEPARTMENT_ID LAST_NAME                     ANNUAL
+------------- ------------------------- ----------
+           50 Kaufling                       94800
+           50 Vollman                        78000
+           50 Mourgos                        69600
+           50 Nayer                          38400
+           50 Mikkilineni                    32400
+           50 Landry                         28800
+           50 Markle                         26400
+           50 Bissot                         39600
+           50 Atkinson                       33600
+           50 Marlow                         30000
+           50 Olson                          25200
+
+DEPARTMENT_ID LAST_NAME                     ANNUAL
+------------- ------------------------- ----------
+           50 Mallin                         39600
+           50 Rogers                         34800
+           50 Gee                            28800
+           50 Philtanker                     26400
+           50 Ladwig                         43200
+           50 Stiles                         38400
+           50 Seo                            32400
+           50 Patel                          30000
+           50 Rajs                           42000
+           50 Davies                         37200
+           50 Matos                          31200
+
+DEPARTMENT_ID LAST_NAME                     ANNUAL
+------------- ------------------------- ----------
+           50 Vargas                         30000
+           80 Russell                       235200
+           80 Partners                      210600
+           80 Errazuriz                     187200
+           80 Cambrault                     171600
+           80 Zlotkey                       151200
+           80 Tucker                        156000
+           80 Bernstein                     142500
+           80 Hall                          135000
+           80 Olsen                         115200
+           80 Cambrault                     108000
+
+DEPARTMENT_ID LAST_NAME                     ANNUAL
+------------- ------------------------- ----------
+           80 Tuvault                        96600
+           80 King                          162000
+           80 Sully                         153900
+           80 McEwen                        145800
+           80 Smith                         124800
+           80 Doran                         117000
+           80 Sewall                        105000
+           80 Vishney                       157500
+           80 Greene                        131100
+           80 Marvins                        95040
+           80 Lee                            89760
+
+DEPARTMENT_ID LAST_NAME                     ANNUAL
+------------- ------------------------- ----------
+           80 Ande                           84480
+           80 Banda                          81840
+           80 Ozer                          172500
+           80 Bloom                         144000
+           80 Fox                           138240
+           80 Smith                         102120
+           80 Bates                         100740
+           80 Kumar                          80520
+           80 Abel                          171600
+           80 Hutton                        132000
+           80 Taylor                        123840
+
+DEPARTMENT_ID LAST_NAME                     ANNUAL
+------------- ------------------------- ----------
+           80 Livingston                    120960
+              Grant                          96600
+           80 Johnson                        81840
+           50 Taylor                         38400
+           50 Fleaur                         37200
+           50 Sullivan                       30000
+           50 Geoni                          33600
+           50 Sarchand                       50400
+           50 Bull                           49200
+           50 Dellinger                      40800
+           50 Cabrio                         36000
+
+DEPARTMENT_ID LAST_NAME                     ANNUAL
+------------- ------------------------- ----------
+           50 Chung                          45600
+           50 Dilly                          43200
+           50 Gates                          34800
+           50 Perkins                        30000
+           50 Bell                           48000
+           50 Everett                        46800
+           50 McCain                         38400
+           50 Jones                          33600
+           50 Walsh                          37200
+           50 Feeney                         36000
+           50 OConnell                       31200
+
+DEPARTMENT_ID LAST_NAME                     ANNUAL
+------------- ------------------------- ----------
+           50 Grant                          31200
+           10 Whalen                         52800
+           20 Hartstein                     156000
+           20 Fay                            72000
+           40 Mavris                         78000
+           70 Baer                          120000
+          110 Higgins                       144000
+          110 Gietz                          99600
+
+107 rows selected.
+
+SQL> @E:\A\class.sql;
+select department_id, last_name, salary 12*salary+12*salary*nvl(commission_pct,0) Annual from employees
+                                        *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL>
+SQL> @E:\A\class.sql;
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           90 King                           24000     288000
+           90 Kochhar                        17000     204000
+           90 De Haan                        17000     204000
+           60 Hunold                          9000     108000
+           60 Ernst                           6000      72000
+           60 Austin                          4800      57600
+           60 Pataballa                       4800      57600
+           60 Lorentz                         4200      50400
+          100 Greenberg                      12000     144000
+          100 Faviet                          9000     108000
+          100 Chen                            8200      98400
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+          100 Sciarra                         7700      92400
+          100 Urman                           7800      93600
+          100 Popp                            6900      82800
+           30 Raphaely                       11000     132000
+           30 Khoo                            3100      37200
+           30 Baida                           2900      34800
+           30 Tobias                          2800      33600
+           30 Himuro                          2600      31200
+           30 Colmenares                      2500      30000
+           50 Weiss                           8000      96000
+           50 Fripp                           8200      98400
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           50 Kaufling                        7900      94800
+           50 Vollman                         6500      78000
+           50 Mourgos                         5800      69600
+           50 Nayer                           3200      38400
+           50 Mikkilineni                     2700      32400
+           50 Landry                          2400      28800
+           50 Markle                          2200      26400
+           50 Bissot                          3300      39600
+           50 Atkinson                        2800      33600
+           50 Marlow                          2500      30000
+           50 Olson                           2100      25200
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           50 Mallin                          3300      39600
+           50 Rogers                          2900      34800
+           50 Gee                             2400      28800
+           50 Philtanker                      2200      26400
+           50 Ladwig                          3600      43200
+           50 Stiles                          3200      38400
+           50 Seo                             2700      32400
+           50 Patel                           2500      30000
+           50 Rajs                            3500      42000
+           50 Davies                          3100      37200
+           50 Matos                           2600      31200
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           50 Vargas                          2500      30000
+           80 Russell                        14000     235200
+           80 Partners                       13500     210600
+           80 Errazuriz                      12000     187200
+           80 Cambrault                      11000     171600
+           80 Zlotkey                        10500     151200
+           80 Tucker                         10000     156000
+           80 Bernstein                       9500     142500
+           80 Hall                            9000     135000
+           80 Olsen                           8000     115200
+           80 Cambrault                       7500     108000
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           80 Tuvault                         7000      96600
+           80 King                           10000     162000
+           80 Sully                           9500     153900
+           80 McEwen                          9000     145800
+           80 Smith                           8000     124800
+           80 Doran                           7500     117000
+           80 Sewall                          7000     105000
+           80 Vishney                        10500     157500
+           80 Greene                          9500     131100
+           80 Marvins                         7200      95040
+           80 Lee                             6800      89760
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           80 Ande                            6400      84480
+           80 Banda                           6200      81840
+           80 Ozer                           11500     172500
+           80 Bloom                          10000     144000
+           80 Fox                             9600     138240
+           80 Smith                           7400     102120
+           80 Bates                           7300     100740
+           80 Kumar                           6100      80520
+           80 Abel                           11000     171600
+           80 Hutton                          8800     132000
+           80 Taylor                          8600     123840
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           80 Livingston                      8400     120960
+              Grant                           7000      96600
+           80 Johnson                         6200      81840
+           50 Taylor                          3200      38400
+           50 Fleaur                          3100      37200
+           50 Sullivan                        2500      30000
+           50 Geoni                           2800      33600
+           50 Sarchand                        4200      50400
+           50 Bull                            4100      49200
+           50 Dellinger                       3400      40800
+           50 Cabrio                          3000      36000
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           50 Chung                           3800      45600
+           50 Dilly                           3600      43200
+           50 Gates                           2900      34800
+           50 Perkins                         2500      30000
+           50 Bell                            4000      48000
+           50 Everett                         3900      46800
+           50 McCain                          3200      38400
+           50 Jones                           2800      33600
+           50 Walsh                           3100      37200
+           50 Feeney                          3000      36000
+           50 OConnell                        2600      31200
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           50 Grant                           2600      31200
+           10 Whalen                          4400      52800
+           20 Hartstein                      13000     156000
+           20 Fay                             6000      72000
+           40 Mavris                          6500      78000
+           70 Baer                           10000     120000
+          110 Higgins                        12000     144000
+          110 Gietz                           8300      99600
+
+107 rows selected.
+
+SQL> @E:\A\class.sql;
+order by employee_id, Annual
+         *
+ERROR at line 2:
+ORA-00904: "EMPLOYEE_ID": invalid identifier
+
+
+SQL> @E:\A\class.sql;
+select department_id, last_name, salary, 12*salary+12*salary*nvl(commission_pct,0) Annual from departments
+                                                                 *
+ERROR at line 1:
+ORA-00904: "COMMISSION_PCT": invalid identifier
+
+
+SQL> @E:\A\class.sql;
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           90 King                           24000     288000
+           90 Kochhar                        17000     204000
+           90 De Haan                        17000     204000
+           60 Hunold                          9000     108000
+           60 Ernst                           6000      72000
+           60 Austin                          4800      57600
+           60 Pataballa                       4800      57600
+           60 Lorentz                         4200      50400
+          100 Greenberg                      12000     144000
+          100 Faviet                          9000     108000
+          100 Chen                            8200      98400
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+          100 Sciarra                         7700      92400
+          100 Urman                           7800      93600
+          100 Popp                            6900      82800
+           30 Raphaely                       11000     132000
+           30 Khoo                            3100      37200
+           30 Baida                           2900      34800
+           30 Tobias                          2800      33600
+           30 Himuro                          2600      31200
+           30 Colmenares                      2500      30000
+           50 Weiss                           8000      96000
+           50 Fripp                           8200      98400
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           50 Kaufling                        7900      94800
+           50 Vollman                         6500      78000
+           50 Mourgos                         5800      69600
+           50 Nayer                           3200      38400
+           50 Mikkilineni                     2700      32400
+           50 Landry                          2400      28800
+           50 Markle                          2200      26400
+           50 Bissot                          3300      39600
+           50 Atkinson                        2800      33600
+           50 Marlow                          2500      30000
+           50 Olson                           2100      25200
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           50 Mallin                          3300      39600
+           50 Rogers                          2900      34800
+           50 Gee                             2400      28800
+           50 Philtanker                      2200      26400
+           50 Ladwig                          3600      43200
+           50 Stiles                          3200      38400
+           50 Seo                             2700      32400
+           50 Patel                           2500      30000
+           50 Rajs                            3500      42000
+           50 Davies                          3100      37200
+           50 Matos                           2600      31200
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           50 Vargas                          2500      30000
+           80 Russell                        14000     235200
+           80 Partners                       13500     210600
+           80 Errazuriz                      12000     187200
+           80 Cambrault                      11000     171600
+           80 Zlotkey                        10500     151200
+           80 Tucker                         10000     156000
+           80 Bernstein                       9500     142500
+           80 Hall                            9000     135000
+           80 Olsen                           8000     115200
+           80 Cambrault                       7500     108000
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           80 Tuvault                         7000      96600
+           80 King                           10000     162000
+           80 Sully                           9500     153900
+           80 McEwen                          9000     145800
+           80 Smith                           8000     124800
+           80 Doran                           7500     117000
+           80 Sewall                          7000     105000
+           80 Vishney                        10500     157500
+           80 Greene                          9500     131100
+           80 Marvins                         7200      95040
+           80 Lee                             6800      89760
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           80 Ande                            6400      84480
+           80 Banda                           6200      81840
+           80 Ozer                           11500     172500
+           80 Bloom                          10000     144000
+           80 Fox                             9600     138240
+           80 Smith                           7400     102120
+           80 Bates                           7300     100740
+           80 Kumar                           6100      80520
+           80 Abel                           11000     171600
+           80 Hutton                          8800     132000
+           80 Taylor                          8600     123840
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           80 Livingston                      8400     120960
+              Grant                           7000      96600
+           80 Johnson                         6200      81840
+           50 Taylor                          3200      38400
+           50 Fleaur                          3100      37200
+           50 Sullivan                        2500      30000
+           50 Geoni                           2800      33600
+           50 Sarchand                        4200      50400
+           50 Bull                            4100      49200
+           50 Dellinger                       3400      40800
+           50 Cabrio                          3000      36000
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           50 Chung                           3800      45600
+           50 Dilly                           3600      43200
+           50 Gates                           2900      34800
+           50 Perkins                         2500      30000
+           50 Bell                            4000      48000
+           50 Everett                         3900      46800
+           50 McCain                          3200      38400
+           50 Jones                           2800      33600
+           50 Walsh                           3100      37200
+           50 Feeney                          3000      36000
+           50 OConnell                        2600      31200
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           50 Grant                           2600      31200
+           10 Whalen                          4400      52800
+           20 Hartstein                      13000     156000
+           20 Fay                             6000      72000
+           40 Mavris                          6500      78000
+           70 Baer                           10000     120000
+          110 Higgins                        12000     144000
+          110 Gietz                           8300      99600
+
+107 rows selected.
+
+SP2-0734: unknown command beginning "order by d..." - rest of line ignored.
+SQL> @E:\A\class.sql;
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           90 King                           24000     288000
+           90 Kochhar                        17000     204000
+           90 De Haan                        17000     204000
+           60 Hunold                          9000     108000
+           60 Ernst                           6000      72000
+           60 Austin                          4800      57600
+           60 Pataballa                       4800      57600
+           60 Lorentz                         4200      50400
+          100 Greenberg                      12000     144000
+          100 Faviet                          9000     108000
+          100 Chen                            8200      98400
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+          100 Sciarra                         7700      92400
+          100 Urman                           7800      93600
+          100 Popp                            6900      82800
+           30 Raphaely                       11000     132000
+           30 Khoo                            3100      37200
+           30 Baida                           2900      34800
+           30 Tobias                          2800      33600
+           30 Himuro                          2600      31200
+           30 Colmenares                      2500      30000
+           50 Weiss                           8000      96000
+           50 Fripp                           8200      98400
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           50 Kaufling                        7900      94800
+           50 Vollman                         6500      78000
+           50 Mourgos                         5800      69600
+           50 Nayer                           3200      38400
+           50 Mikkilineni                     2700      32400
+           50 Landry                          2400      28800
+           50 Markle                          2200      26400
+           50 Bissot                          3300      39600
+           50 Atkinson                        2800      33600
+           50 Marlow                          2500      30000
+           50 Olson                           2100      25200
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           50 Mallin                          3300      39600
+           50 Rogers                          2900      34800
+           50 Gee                             2400      28800
+           50 Philtanker                      2200      26400
+           50 Ladwig                          3600      43200
+           50 Stiles                          3200      38400
+           50 Seo                             2700      32400
+           50 Patel                           2500      30000
+           50 Rajs                            3500      42000
+           50 Davies                          3100      37200
+           50 Matos                           2600      31200
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           50 Vargas                          2500      30000
+           80 Russell                        14000     235200
+           80 Partners                       13500     210600
+           80 Errazuriz                      12000     187200
+           80 Cambrault                      11000     171600
+           80 Zlotkey                        10500     151200
+           80 Tucker                         10000     156000
+           80 Bernstein                       9500     142500
+           80 Hall                            9000     135000
+           80 Olsen                           8000     115200
+           80 Cambrault                       7500     108000
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           80 Tuvault                         7000      96600
+           80 King                           10000     162000
+           80 Sully                           9500     153900
+           80 McEwen                          9000     145800
+           80 Smith                           8000     124800
+           80 Doran                           7500     117000
+           80 Sewall                          7000     105000
+           80 Vishney                        10500     157500
+           80 Greene                          9500     131100
+           80 Marvins                         7200      95040
+           80 Lee                             6800      89760
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           80 Ande                            6400      84480
+           80 Banda                           6200      81840
+           80 Ozer                           11500     172500
+           80 Bloom                          10000     144000
+           80 Fox                             9600     138240
+           80 Smith                           7400     102120
+           80 Bates                           7300     100740
+           80 Kumar                           6100      80520
+           80 Abel                           11000     171600
+           80 Hutton                          8800     132000
+           80 Taylor                          8600     123840
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           80 Livingston                      8400     120960
+              Grant                           7000      96600
+           80 Johnson                         6200      81840
+           50 Taylor                          3200      38400
+           50 Fleaur                          3100      37200
+           50 Sullivan                        2500      30000
+           50 Geoni                           2800      33600
+           50 Sarchand                        4200      50400
+           50 Bull                            4100      49200
+           50 Dellinger                       3400      40800
+           50 Cabrio                          3000      36000
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           50 Chung                           3800      45600
+           50 Dilly                           3600      43200
+           50 Gates                           2900      34800
+           50 Perkins                         2500      30000
+           50 Bell                            4000      48000
+           50 Everett                         3900      46800
+           50 McCain                          3200      38400
+           50 Jones                           2800      33600
+           50 Walsh                           3100      37200
+           50 Feeney                          3000      36000
+           50 OConnell                        2600      31200
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           50 Grant                           2600      31200
+           10 Whalen                          4400      52800
+           20 Hartstein                      13000     156000
+           20 Fay                             6000      72000
+           40 Mavris                          6500      78000
+           70 Baer                           10000     120000
+          110 Higgins                        12000     144000
+          110 Gietz                           8300      99600
+
+107 rows selected.
+
+SP2-0734: unknown command beginning "order by d..." - rest of line ignored.
+SQL> @E:\A\class.sql;
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           90 King                           24000     288000
+           90 Kochhar                        17000     204000
+           90 De Haan                        17000     204000
+           60 Hunold                          9000     108000
+           60 Ernst                           6000      72000
+           60 Austin                          4800      57600
+           60 Pataballa                       4800      57600
+           60 Lorentz                         4200      50400
+          100 Greenberg                      12000     144000
+          100 Faviet                          9000     108000
+          100 Chen                            8200      98400
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+          100 Sciarra                         7700      92400
+          100 Urman                           7800      93600
+          100 Popp                            6900      82800
+           30 Raphaely                       11000     132000
+           30 Khoo                            3100      37200
+           30 Baida                           2900      34800
+           30 Tobias                          2800      33600
+           30 Himuro                          2600      31200
+           30 Colmenares                      2500      30000
+           50 Weiss                           8000      96000
+           50 Fripp                           8200      98400
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           50 Kaufling                        7900      94800
+           50 Vollman                         6500      78000
+           50 Mourgos                         5800      69600
+           50 Nayer                           3200      38400
+           50 Mikkilineni                     2700      32400
+           50 Landry                          2400      28800
+           50 Markle                          2200      26400
+           50 Bissot                          3300      39600
+           50 Atkinson                        2800      33600
+           50 Marlow                          2500      30000
+           50 Olson                           2100      25200
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           50 Mallin                          3300      39600
+           50 Rogers                          2900      34800
+           50 Gee                             2400      28800
+           50 Philtanker                      2200      26400
+           50 Ladwig                          3600      43200
+           50 Stiles                          3200      38400
+           50 Seo                             2700      32400
+           50 Patel                           2500      30000
+           50 Rajs                            3500      42000
+           50 Davies                          3100      37200
+           50 Matos                           2600      31200
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           50 Vargas                          2500      30000
+           80 Russell                        14000     235200
+           80 Partners                       13500     210600
+           80 Errazuriz                      12000     187200
+           80 Cambrault                      11000     171600
+           80 Zlotkey                        10500     151200
+           80 Tucker                         10000     156000
+           80 Bernstein                       9500     142500
+           80 Hall                            9000     135000
+           80 Olsen                           8000     115200
+           80 Cambrault                       7500     108000
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           80 Tuvault                         7000      96600
+           80 King                           10000     162000
+           80 Sully                           9500     153900
+           80 McEwen                          9000     145800
+           80 Smith                           8000     124800
+           80 Doran                           7500     117000
+           80 Sewall                          7000     105000
+           80 Vishney                        10500     157500
+           80 Greene                          9500     131100
+           80 Marvins                         7200      95040
+           80 Lee                             6800      89760
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           80 Ande                            6400      84480
+           80 Banda                           6200      81840
+           80 Ozer                           11500     172500
+           80 Bloom                          10000     144000
+           80 Fox                             9600     138240
+           80 Smith                           7400     102120
+           80 Bates                           7300     100740
+           80 Kumar                           6100      80520
+           80 Abel                           11000     171600
+           80 Hutton                          8800     132000
+           80 Taylor                          8600     123840
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           80 Livingston                      8400     120960
+              Grant                           7000      96600
+           80 Johnson                         6200      81840
+           50 Taylor                          3200      38400
+           50 Fleaur                          3100      37200
+           50 Sullivan                        2500      30000
+           50 Geoni                           2800      33600
+           50 Sarchand                        4200      50400
+           50 Bull                            4100      49200
+           50 Dellinger                       3400      40800
+           50 Cabrio                          3000      36000
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           50 Chung                           3800      45600
+           50 Dilly                           3600      43200
+           50 Gates                           2900      34800
+           50 Perkins                         2500      30000
+           50 Bell                            4000      48000
+           50 Everett                         3900      46800
+           50 McCain                          3200      38400
+           50 Jones                           2800      33600
+           50 Walsh                           3100      37200
+           50 Feeney                          3000      36000
+           50 OConnell                        2600      31200
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           50 Grant                           2600      31200
+           10 Whalen                          4400      52800
+           20 Hartstein                      13000     156000
+           20 Fay                             6000      72000
+           40 Mavris                          6500      78000
+           70 Baer                           10000     120000
+          110 Higgins                        12000     144000
+          110 Gietz                           8300      99600
+
+107 rows selected.
+
+SP2-0734: unknown command beginning "order by d..." - rest of line ignored.
+SQL> @E:\A\class.sql;
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           10 Whalen                          4400      52800
+           20 Hartstein                      13000     156000
+           20 Fay                             6000      72000
+           30 Raphaely                       11000     132000
+           30 Khoo                            3100      37200
+           30 Baida                           2900      34800
+           30 Tobias                          2800      33600
+           30 Himuro                          2600      31200
+           30 Colmenares                      2500      30000
+           40 Mavris                          6500      78000
+           50 Fripp                           8200      98400
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           50 Weiss                           8000      96000
+           50 Kaufling                        7900      94800
+           50 Vollman                         6500      78000
+           50 Mourgos                         5800      69600
+           50 Sarchand                        4200      50400
+           50 Bull                            4100      49200
+           50 Bell                            4000      48000
+           50 Everett                         3900      46800
+           50 Chung                           3800      45600
+           50 Dilly                           3600      43200
+           50 Ladwig                          3600      43200
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           50 Rajs                            3500      42000
+           50 Dellinger                       3400      40800
+           50 Mallin                          3300      39600
+           50 Bissot                          3300      39600
+           50 Taylor                          3200      38400
+           50 Nayer                           3200      38400
+           50 Stiles                          3200      38400
+           50 McCain                          3200      38400
+           50 Davies                          3100      37200
+           50 Walsh                           3100      37200
+           50 Fleaur                          3100      37200
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           50 Cabrio                          3000      36000
+           50 Feeney                          3000      36000
+           50 Rogers                          2900      34800
+           50 Gates                           2900      34800
+           50 Atkinson                        2800      33600
+           50 Jones                           2800      33600
+           50 Geoni                           2800      33600
+           50 Mikkilineni                     2700      32400
+           50 Seo                             2700      32400
+           50 Matos                           2600      31200
+           50 OConnell                        2600      31200
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           50 Grant                           2600      31200
+           50 Perkins                         2500      30000
+           50 Marlow                          2500      30000
+           50 Sullivan                        2500      30000
+           50 Patel                           2500      30000
+           50 Vargas                          2500      30000
+           50 Gee                             2400      28800
+           50 Landry                          2400      28800
+           50 Markle                          2200      26400
+           50 Philtanker                      2200      26400
+           50 Olson                           2100      25200
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           60 Hunold                          9000     108000
+           60 Ernst                           6000      72000
+           60 Austin                          4800      57600
+           60 Pataballa                       4800      57600
+           60 Lorentz                         4200      50400
+           70 Baer                           10000     120000
+           80 Russell                        14000     235200
+           80 Partners                       13500     210600
+           80 Errazuriz                      12000     187200
+           80 Ozer                           11500     172500
+           80 Cambrault                      11000     171600
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           80 Abel                           11000     171600
+           80 King                           10000     162000
+           80 Vishney                        10500     157500
+           80 Tucker                         10000     156000
+           80 Sully                           9500     153900
+           80 Zlotkey                        10500     151200
+           80 McEwen                          9000     145800
+           80 Bloom                          10000     144000
+           80 Bernstein                       9500     142500
+           80 Fox                             9600     138240
+           80 Hall                            9000     135000
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           80 Hutton                          8800     132000
+           80 Greene                          9500     131100
+           80 Smith                           8000     124800
+           80 Taylor                          8600     123840
+           80 Livingston                      8400     120960
+           80 Doran                           7500     117000
+           80 Olsen                           8000     115200
+           80 Cambrault                       7500     108000
+           80 Sewall                          7000     105000
+           80 Smith                           7400     102120
+           80 Bates                           7300     100740
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           80 Tuvault                         7000      96600
+           80 Marvins                         7200      95040
+           80 Lee                             6800      89760
+           80 Ande                            6400      84480
+           80 Banda                           6200      81840
+           80 Johnson                         6200      81840
+           80 Kumar                           6100      80520
+           90 King                           24000     288000
+           90 Kochhar                        17000     204000
+           90 De Haan                        17000     204000
+          100 Greenberg                      12000     144000
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+          100 Faviet                          9000     108000
+          100 Chen                            8200      98400
+          100 Urman                           7800      93600
+          100 Sciarra                         7700      92400
+          100 Popp                            6900      82800
+          110 Higgins                        12000     144000
+          110 Gietz                           8300      99600
+              Grant                           7000      96600
+
+107 rows selected.
+
+SQL> describe departments;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DEPARTMENT_ID                             NOT NULL NUMBER(4)
+ DEPARTMENT_NAME                           NOT NULL VARCHAR2(30)
+ MANAGER_ID                                         NUMBER(6)
+ LOCATION_ID                                        NUMBER(4)
+
+SQL> select department_id;
+select department_id
+                   *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> select department_id from employees;
+
+DEPARTMENT_ID
+-------------
+           90
+           90
+           90
+           60
+           60
+           60
+           60
+           60
+          100
+          100
+          100
+
+DEPARTMENT_ID
+-------------
+          100
+          100
+          100
+           30
+           30
+           30
+           30
+           30
+           30
+           50
+           50
+
+DEPARTMENT_ID
+-------------
+           50
+           50
+           50
+           50
+           50
+           50
+           50
+           50
+           50
+           50
+           50
+
+DEPARTMENT_ID
+-------------
+           50
+           50
+           50
+           50
+           50
+           50
+           50
+           50
+           50
+           50
+           50
+
+DEPARTMENT_ID
+-------------
+           50
+           80
+           80
+           80
+           80
+           80
+           80
+           80
+           80
+           80
+           80
+
+DEPARTMENT_ID
+-------------
+           80
+           80
+           80
+           80
+           80
+           80
+           80
+           80
+           80
+           80
+           80
+
+DEPARTMENT_ID
+-------------
+           80
+           80
+           80
+           80
+           80
+           80
+           80
+           80
+           80
+           80
+           80
+
+DEPARTMENT_ID
+-------------
+           80
+
+           80
+           50
+           50
+           50
+           50
+           50
+           50
+           50
+           50
+
+DEPARTMENT_ID
+-------------
+           50
+           50
+           50
+           50
+           50
+           50
+           50
+           50
+           50
+           50
+           50
+
+DEPARTMENT_ID
+-------------
+           50
+           10
+           20
+           20
+           40
+           70
+          110
+          110
+
+107 rows selected.
+
+SQL> @E:\A\class_25_july.sql;
+where job_id = 'SA_REP' and job_id in(90) and salary > 5000
+                            *
+ERROR at line 2:
+ORA-01722: invalid number
+
+
+SQL> @E:\A\class.sql;
+where job_id = 'SA_REP' and job_id = 90 and salary > 5000
+                            *
+ERROR at line 2:
+ORA-01722: invalid number
+
+
+SQL> @E:\A\class.sql;
+where job_id = 'SA_REP' AND job_id = 90 AND salary > 5000
+                            *
+ERROR at line 2:
+ORA-01722: invalid number
+
+
+SQL> @E:\A\class.sql;
+where (job_id = 'SA_REP' AND job_id = 90 AND salary > 5000)
+                             *
+ERROR at line 2:
+ORA-01722: invalid number
+
+
+SQL> @E:\A\class.sql;
+where job_id = 'SA_REP' AND job_id = 50 AND salary > 5000
+                            *
+ERROR at line 2:
+ORA-01722: invalid number
+
+
+SQL> @E:\A\class.sql;
+
+no rows selected
+
+SQL> @E:\A\class.sql;
+
+no rows selected
+
+SQL> @E:\A\class.sql;
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           80 Ozer                           11500     172500
+           80 Abel                           11000     171600
+           80 King                           10000     162000
+           80 Vishney                        10500     157500
+           80 Tucker                         10000     156000
+           80 Sully                           9500     153900
+           80 McEwen                          9000     145800
+           80 Bloom                          10000     144000
+           80 Bernstein                       9500     142500
+           80 Fox                             9600     138240
+           80 Hall                            9000     135000
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           80 Hutton                          8800     132000
+           80 Greene                          9500     131100
+           80 Smith                           8000     124800
+           80 Taylor                          8600     123840
+           80 Livingston                      8400     120960
+           80 Doran                           7500     117000
+           80 Olsen                           8000     115200
+           80 Cambrault                       7500     108000
+           80 Sewall                          7000     105000
+           80 Smith                           7400     102120
+           80 Bates                           7300     100740
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           80 Tuvault                         7000      96600
+           80 Marvins                         7200      95040
+           80 Lee                             6800      89760
+           80 Ande                            6400      84480
+           80 Banda                           6200      81840
+           80 Johnson                         6200      81840
+           80 Kumar                           6100      80520
+
+29 rows selected.
+
+SQL> @E:\A\class.sql;
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           80 Ozer                           11500     172500
+           80 Abel                           11000     171600
+           80 King                           10000     162000
+           80 Vishney                        10500     157500
+           80 Tucker                         10000     156000
+           80 Sully                           9500     153900
+           80 McEwen                          9000     145800
+           80 Bloom                          10000     144000
+           80 Bernstein                       9500     142500
+           80 Fox                             9600     138240
+           80 Hall                            9000     135000
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           80 Hutton                          8800     132000
+           80 Greene                          9500     131100
+           80 Smith                           8000     124800
+           80 Taylor                          8600     123840
+           80 Livingston                      8400     120960
+           80 Doran                           7500     117000
+           80 Olsen                           8000     115200
+           80 Cambrault                       7500     108000
+           80 Sewall                          7000     105000
+           80 Smith                           7400     102120
+           80 Bates                           7300     100740
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           80 Tuvault                         7000      96600
+           80 Marvins                         7200      95040
+           80 Lee                             6800      89760
+           80 Ande                            6400      84480
+           80 Banda                           6200      81840
+           80 Johnson                         6200      81840
+           80 Kumar                           6100      80520
+
+29 rows selected.
+
+SQL> @E:\A\class.sql;
+
+DEPARTMENT_ID LAST_NAME                     ANNUAL
+------------- ------------------------- ----------
+           80 Ozer                          172500
+           80 Abel                          171600
+           80 King                          162000
+           80 Vishney                       157500
+           80 Tucker                        156000
+           80 Sully                         153900
+           80 McEwen                        145800
+           80 Bloom                         144000
+           80 Bernstein                     142500
+           80 Fox                           138240
+           80 Hall                          135000
+
+DEPARTMENT_ID LAST_NAME                     ANNUAL
+------------- ------------------------- ----------
+           80 Hutton                        132000
+           80 Greene                        131100
+           80 Smith                         124800
+           80 Taylor                        123840
+           80 Livingston                    120960
+           80 Doran                         117000
+           80 Olsen                         115200
+           80 Cambrault                     108000
+           80 Sewall                        105000
+           80 Smith                         102120
+           80 Bates                         100740
+
+DEPARTMENT_ID LAST_NAME                     ANNUAL
+------------- ------------------------- ----------
+           80 Tuvault                        96600
+           80 Marvins                        95040
+           80 Lee                            89760
+           80 Ande                           84480
+           80 Banda                          81840
+           80 Johnson                        81840
+           80 Kumar                          80520
+
+29 rows selected.
+
+SQL> @E:\A\class.sql;
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           80 Ozer                           11500     172500
+           80 Abel                           11000     171600
+           80 King                           10000     162000
+           80 Vishney                        10500     157500
+           80 Tucker                         10000     156000
+           80 Sully                           9500     153900
+           80 McEwen                          9000     145800
+           80 Bloom                          10000     144000
+           80 Bernstein                       9500     142500
+           80 Fox                             9600     138240
+           80 Hall                            9000     135000
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           80 Hutton                          8800     132000
+           80 Greene                          9500     131100
+           80 Smith                           8000     124800
+           80 Taylor                          8600     123840
+           80 Livingston                      8400     120960
+           80 Doran                           7500     117000
+           80 Olsen                           8000     115200
+           80 Cambrault                       7500     108000
+           80 Sewall                          7000     105000
+           80 Smith                           7400     102120
+           80 Bates                           7300     100740
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           80 Tuvault                         7000      96600
+           80 Marvins                         7200      95040
+           80 Lee                             6800      89760
+           80 Ande                            6400      84480
+           80 Banda                           6200      81840
+           80 Johnson                         6200      81840
+           80 Kumar                           6100      80520
+
+29 rows selected.
+
+SQL> @E:\A\class.sql;
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           80 Ozer                           11500     172500
+           80 Abel                           11000     171600
+           80 King                           10000     162000
+           80 Vishney                        10500     157500
+           80 Tucker                         10000     156000
+           80 Sully                           9500     153900
+           80 McEwen                          9000     145800
+           80 Bloom                          10000     144000
+           80 Bernstein                       9500     142500
+           80 Fox                             9600     138240
+           80 Hall                            9000     135000
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           80 Hutton                          8800     132000
+           80 Greene                          9500     131100
+           80 Smith                           8000     124800
+           80 Taylor                          8600     123840
+           80 Livingston                      8400     120960
+           80 Doran                           7500     117000
+           80 Olsen                           8000     115200
+           80 Cambrault                       7500     108000
+           80 Sewall                          7000     105000
+           80 Smith                           7400     102120
+           80 Bates                           7300     100740
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           80 Tuvault                         7000      96600
+           80 Marvins                         7200      95040
+           80 Lee                             6800      89760
+           80 Ande                            6400      84480
+           80 Banda                           6200      81840
+           80 Johnson                         6200      81840
+           80 Kumar                           6100      80520
+
+29 rows selected.
+
+SQL> select department_id, last_name, salary, 12*salary+12*salary*nvl(commission_pct,0) Annual from employees
+  2  where job_id = 'SA_REP' AND department_id = 80 AND salary > 1000
+  3  order by department_id, Annual desc;
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           80 Ozer                           11500     172500
+           80 Abel                           11000     171600
+           80 King                           10000     162000
+           80 Vishney                        10500     157500
+           80 Tucker                         10000     156000
+           80 Sully                           9500     153900
+           80 McEwen                          9000     145800
+           80 Bloom                          10000     144000
+           80 Bernstein                       9500     142500
+           80 Fox                             9600     138240
+           80 Hall                            9000     135000
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           80 Hutton                          8800     132000
+           80 Greene                          9500     131100
+           80 Smith                           8000     124800
+           80 Taylor                          8600     123840
+           80 Livingston                      8400     120960
+           80 Doran                           7500     117000
+           80 Olsen                           8000     115200
+           80 Cambrault                       7500     108000
+           80 Sewall                          7000     105000
+           80 Smith                           7400     102120
+           80 Bates                           7300     100740
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           80 Tuvault                         7000      96600
+           80 Marvins                         7200      95040
+           80 Lee                             6800      89760
+           80 Ande                            6400      84480
+           80 Banda                           6200      81840
+           80 Johnson                         6200      81840
+           80 Kumar                           6100      80520
+
+29 rows selected.
+
+SQL> select department_id, last_name, salary, 12*salary+12*salary*nvl(commission_pct,0) Annual from employees order by department_id, Annual desc;
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           10 Whalen                          4400      52800
+           20 Hartstein                      13000     156000
+           20 Fay                             6000      72000
+           30 Raphaely                       11000     132000
+           30 Khoo                            3100      37200
+           30 Baida                           2900      34800
+           30 Tobias                          2800      33600
+           30 Himuro                          2600      31200
+           30 Colmenares                      2500      30000
+           40 Mavris                          6500      78000
+           50 Fripp                           8200      98400
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           50 Weiss                           8000      96000
+           50 Kaufling                        7900      94800
+           50 Vollman                         6500      78000
+           50 Mourgos                         5800      69600
+           50 Sarchand                        4200      50400
+           50 Bull                            4100      49200
+           50 Bell                            4000      48000
+           50 Everett                         3900      46800
+           50 Chung                           3800      45600
+           50 Dilly                           3600      43200
+           50 Ladwig                          3600      43200
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           50 Rajs                            3500      42000
+           50 Dellinger                       3400      40800
+           50 Mallin                          3300      39600
+           50 Bissot                          3300      39600
+           50 Taylor                          3200      38400
+           50 Nayer                           3200      38400
+           50 Stiles                          3200      38400
+           50 McCain                          3200      38400
+           50 Davies                          3100      37200
+           50 Walsh                           3100      37200
+           50 Fleaur                          3100      37200
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           50 Cabrio                          3000      36000
+           50 Feeney                          3000      36000
+           50 Rogers                          2900      34800
+           50 Gates                           2900      34800
+           50 Atkinson                        2800      33600
+           50 Jones                           2800      33600
+           50 Geoni                           2800      33600
+           50 Mikkilineni                     2700      32400
+           50 Seo                             2700      32400
+           50 Matos                           2600      31200
+           50 OConnell                        2600      31200
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           50 Grant                           2600      31200
+           50 Perkins                         2500      30000
+           50 Marlow                          2500      30000
+           50 Sullivan                        2500      30000
+           50 Patel                           2500      30000
+           50 Vargas                          2500      30000
+           50 Gee                             2400      28800
+           50 Landry                          2400      28800
+           50 Markle                          2200      26400
+           50 Philtanker                      2200      26400
+           50 Olson                           2100      25200
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           60 Hunold                          9000     108000
+           60 Ernst                           6000      72000
+           60 Austin                          4800      57600
+           60 Pataballa                       4800      57600
+           60 Lorentz                         4200      50400
+           70 Baer                           10000     120000
+           80 Russell                        14000     235200
+           80 Partners                       13500     210600
+           80 Errazuriz                      12000     187200
+           80 Ozer                           11500     172500
+           80 Cambrault                      11000     171600
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           80 Abel                           11000     171600
+           80 King                           10000     162000
+           80 Vishney                        10500     157500
+           80 Tucker                         10000     156000
+           80 Sully                           9500     153900
+           80 Zlotkey                        10500     151200
+           80 McEwen                          9000     145800
+           80 Bloom                          10000     144000
+           80 Bernstein                       9500     142500
+           80 Fox                             9600     138240
+           80 Hall                            9000     135000
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           80 Hutton                          8800     132000
+           80 Greene                          9500     131100
+           80 Smith                           8000     124800
+           80 Taylor                          8600     123840
+           80 Livingston                      8400     120960
+           80 Doran                           7500     117000
+           80 Olsen                           8000     115200
+           80 Cambrault                       7500     108000
+           80 Sewall                          7000     105000
+           80 Smith                           7400     102120
+           80 Bates                           7300     100740
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           80 Tuvault                         7000      96600
+           80 Marvins                         7200      95040
+           80 Lee                             6800      89760
+           80 Ande                            6400      84480
+           80 Banda                           6200      81840
+           80 Johnson                         6200      81840
+           80 Kumar                           6100      80520
+           90 King                           24000     288000
+           90 Kochhar                        17000     204000
+           90 De Haan                        17000     204000
+          100 Greenberg                      12000     144000
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+          100 Faviet                          9000     108000
+          100 Chen                            8200      98400
+          100 Urman                           7800      93600
+          100 Sciarra                         7700      92400
+          100 Popp                            6900      82800
+          110 Higgins                        12000     144000
+          110 Gietz                           8300      99600
+              Grant                           7000      96600
+
+107 rows selected.
+
+SQL> describe departments;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DEPARTMENT_ID                             NOT NULL NUMBER(4)
+ DEPARTMENT_NAME                           NOT NULL VARCHAR2(30)
+ MANAGER_ID                                         NUMBER(6)
+ LOCATION_ID                                        NUMBER(4)
+
+SQL> select salary from departments;
+select salary from departments
+       *
+ERROR at line 1:
+ORA-00904: "SALARY": invalid identifier
+
+
+SQL> describe employees;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPLOYEE_ID                               NOT NULL NUMBER(6)
+ FIRST_NAME                                         VARCHAR2(20)
+ LAST_NAME                                 NOT NULL VARCHAR2(25)
+ EMAIL                                     NOT NULL VARCHAR2(25)
+ PHONE_NUMBER                                       VARCHAR2(20)
+ HIRE_DATE                                 NOT NULL DATE
+ JOB_ID                                    NOT NULL VARCHAR2(10)
+ SALARY                                             NUMBER(8,2)
+ COMMISSION_PCT                                     NUMBER(2,2)
+ MANAGER_ID                                         NUMBER(6)
+ DEPARTMENT_ID                                      NUMBER(4)
+
+SQL> @E:\A\class.sql;
+select department_name, last_name, salary, 12*salary+12*salary*nvl(commission_pct,0) Annual from employees
+       *
+ERROR at line 1:
+ORA-00904: "DEPARTMENT_NAME": invalid identifier
+
+
+SQL> describe departments;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DEPARTMENT_ID                             NOT NULL NUMBER(4)
+ DEPARTMENT_NAME                           NOT NULL VARCHAR2(30)
+ MANAGER_ID                                         NUMBER(6)
+ LOCATION_ID                                        NUMBER(4)
+
+SQL> @E:\A\class.sql;
+where job_id = 'SA_REP' AND department_id = 80 AND salary > 1000
+                            *
+ERROR at line 2:
+ORA-00918: column ambiguously defined
+
+
+SQL> @E:\A\class.sql;
+where job_id = 'SA_REP' AND department_id = 80 AND salary > 1000
+                            *
+ERROR at line 2:
+ORA-00918: column ambiguously defined
+
+
+SQL> @E:\A\class.sql;
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           80 Ozer                           11500     172500
+           80 Abel                           11000     171600
+           80 King                           10000     162000
+           80 Vishney                        10500     157500
+           80 Tucker                         10000     156000
+           80 Sully                           9500     153900
+           80 McEwen                          9000     145800
+           80 Bloom                          10000     144000
+           80 Bernstein                       9500     142500
+           80 Fox                             9600     138240
+           80 Hall                            9000     135000
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           80 Hutton                          8800     132000
+           80 Greene                          9500     131100
+           80 Smith                           8000     124800
+           80 Taylor                          8600     123840
+           80 Livingston                      8400     120960
+           80 Doran                           7500     117000
+           80 Olsen                           8000     115200
+           80 Cambrault                       7500     108000
+           80 Sewall                          7000     105000
+           80 Smith                           7400     102120
+           80 Bates                           7300     100740
+
+DEPARTMENT_ID LAST_NAME                     SALARY     ANNUAL
+------------- ------------------------- ---------- ----------
+           80 Tuvault                         7000      96600
+           80 Marvins                         7200      95040
+           80 Lee                             6800      89760
+           80 Ande                            6400      84480
+           80 Banda                           6200      81840
+           80 Johnson                         6200      81840
+           80 Kumar                           6100      80520
+
+29 rows selected.
+
+SQL> @E:\A\class2.sql;
+Enter value for employee_num: 100
+old   1: select employees_id, last_name, salary, department_id from employees where employees id = &employee_num
+new   1: select employees_id, last_name, salary, department_id from employees where employees id = 100
+select employees_id, last_name, salary, department_id from employees where employees id = 100
+                                                                                     *
+ERROR at line 1:
+ORA-00920: invalid relational operator
+
+
+SQL> select employee_id from employees;
+
+EMPLOYEE_ID
+-----------
+        100
+        101
+        102
+        103
+        104
+        105
+        106
+        107
+        108
+        109
+        110
+
+EMPLOYEE_ID
+-----------
+        111
+        112
+        113
+        114
+        115
+        116
+        117
+        118
+        119
+        120
+        121
+
+EMPLOYEE_ID
+-----------
+        122
+        123
+        124
+        125
+        126
+        127
+        128
+        129
+        130
+        131
+        132
+
+EMPLOYEE_ID
+-----------
+        133
+        134
+        135
+        136
+        137
+        138
+        139
+        140
+        141
+        142
+        143
+
+EMPLOYEE_ID
+-----------
+        144
+        145
+        146
+        147
+        148
+        149
+        150
+        151
+        152
+        153
+        154
+
+EMPLOYEE_ID
+-----------
+        155
+        156
+        157
+        158
+        159
+        160
+        161
+        162
+        163
+        164
+        165
+
+EMPLOYEE_ID
+-----------
+        166
+        167
+        168
+        169
+        170
+        171
+        172
+        173
+        174
+        175
+        176
+
+EMPLOYEE_ID
+-----------
+        177
+        178
+        179
+        180
+        181
+        182
+        183
+        184
+        185
+        186
+        187
+
+EMPLOYEE_ID
+-----------
+        188
+        189
+        190
+        191
+        192
+        193
+        194
+        195
+        196
+        197
+        198
+
+EMPLOYEE_ID
+-----------
+        199
+        200
+        201
+        202
+        203
+        204
+        205
+        206
+
+107 rows selected.
+
+SQL> @E:\A\class2.sql;
+Enter value for employee_num: 205
+old   1: select employees_id, last_name, salary, department_id from employees where employees id = &employee_num
+new   1: select employees_id, last_name, salary, department_id from employees where employees id = 205
+select employees_id, last_name, salary, department_id from employees where employees id = 205
+                                                                                     *
+ERROR at line 1:
+ORA-00920: invalid relational operator
+
+
+SQL> @E:\A\class2.sql;
+Enter value for employee_num: 205
+old   1: select employee_id, last_name, salary, department_id from employees where employees id = &employee_num
+new   1: select employee_id, last_name, salary, department_id from employees where employees id = 205
+select employee_id, last_name, salary, department_id from employees where employees id = 205
+                                                                                    *
+ERROR at line 1:
+ORA-00920: invalid relational operator
+
+
+SQL> @E:\A\class2.sql;
+Enter value for employee_num: 205
+old   1: select employee_id, last_name, salary, department_id from employees where employee_id = &employee_num
+new   1: select employee_id, last_name, salary, department_id from employees where employee_id = 205
+
+EMPLOYEE_ID LAST_NAME                     SALARY DEPARTMENT_ID
+----------- ------------------------- ---------- -------------
+        205 Higgins                        12000           110
+
+SQL> @E:\A\class2.sql;
+Enter value for employee_num: 05
+old   1: select last_name, salary, department_id, 12*salary+12*salary*nvl(commission_pct,0) Annual from employees where employee_id = &employee_num
+new   1: select last_name, salary, department_id, 12*salary+12*salary*nvl(commission_pct,0) Annual from employees where employee_id = 05
+
+no rows selected
+
+SQL> @E:\A\class2.sql;
+Enter value for employee_num: 205
+old   1: select last_name, salary, department_id, 12*salary+12*salary*nvl(commission_pct,0) Annual from employees where employee_id = &employee_num
+new   1: select last_name, salary, department_id, 12*salary+12*salary*nvl(commission_pct,0) Annual from employees where employee_id = 205
+
+LAST_NAME                     SALARY DEPARTMENT_ID     ANNUAL
+------------------------- ---------- ------------- ----------
+Higgins                        12000           110     144000
+
+SQL> @E:\A\class2.sql;
+Enter value for employee: 205
+old   1: select last_name, salary, department_id, 12*salary+12*salary*nvl(commission_pct,0) Annual from employees where employee_id = &employee
+new   1: select last_name, salary, department_id, 12*salary+12*salary*nvl(commission_pct,0) Annual from employees where employee_id = 205
+
+LAST_NAME                     SALARY DEPARTMENT_ID     ANNUAL
+------------------------- ---------- ------------- ----------
+Higgins                        12000           110     144000
+
+SQL> @E:\A\class2.sql;
+Enter value for employee: 100
+old   1: select last_name, salary, department_id, 12*salary+12*salary*nvl(commission_pct,0) Annual from employees where employee_id = &employee
+new   1: select last_name, salary, department_id, 12*salary+12*salary*nvl(commission_pct,0) Annual from employees where employee_id = 100
+
+LAST_NAME                     SALARY DEPARTMENT_ID     ANNUAL
+------------------------- ---------- ------------- ----------
+King                           24000            90     288000
+
+SQL> @E:\A\class3.sql;
+Enter value for last_name: king
+Enter value for salary: 2000
+Enter value for department_id: 90
+Enter value for employee: akib
+old   1: select &last_name, &salary, &department_id, 12*salary+12*salary*nvl(commission_pct,0) Annual from employees where employee_id = &employee
+new   1: select king, 2000, 90, 12*salary+12*salary*nvl(commission_pct,0) Annual from employees where employee_id = akib
+select king, 2000, 90, 12*salary+12*salary*nvl(commission_pct,0) Annual from employees where employee_id = akib
+                                                                                                           *
+ERROR at line 1:
+ORA-00904: "AKIB": invalid identifier
+
+
+SQL> @E:\A\class4.sql;
+Enter value for column_name: department_id
+old   1: select employee_id, last_name, job_id, &&column_name from employees order by &column_name
+new   1: select employee_id, last_name, job_id, department_id from employees order by department_id
+
+EMPLOYEE_ID LAST_NAME                 JOB_ID     DEPARTMENT_ID
+----------- ------------------------- ---------- -------------
+        200 Whalen                    AD_ASST               10
+        201 Hartstein                 MK_MAN                20
+        202 Fay                       MK_REP                20
+        114 Raphaely                  PU_MAN                30
+        115 Khoo                      PU_CLERK              30
+        116 Baida                     PU_CLERK              30
+        117 Tobias                    PU_CLERK              30
+        118 Himuro                    PU_CLERK              30
+        119 Colmenares                PU_CLERK              30
+        203 Mavris                    HR_REP                40
+        120 Weiss                     ST_MAN                50
+
+EMPLOYEE_ID LAST_NAME                 JOB_ID     DEPARTMENT_ID
+----------- ------------------------- ---------- -------------
+        121 Fripp                     ST_MAN                50
+        122 Kaufling                  ST_MAN                50
+        123 Vollman                   ST_MAN                50
+        124 Mourgos                   ST_MAN                50
+        125 Nayer                     ST_CLERK              50
+        126 Mikkilineni               ST_CLERK              50
+        127 Landry                    ST_CLERK              50
+        128 Markle                    ST_CLERK              50
+        129 Bissot                    ST_CLERK              50
+        130 Atkinson                  ST_CLERK              50
+        131 Marlow                    ST_CLERK              50
+
+EMPLOYEE_ID LAST_NAME                 JOB_ID     DEPARTMENT_ID
+----------- ------------------------- ---------- -------------
+        132 Olson                     ST_CLERK              50
+        133 Mallin                    ST_CLERK              50
+        134 Rogers                    ST_CLERK              50
+        135 Gee                       ST_CLERK              50
+        136 Philtanker                ST_CLERK              50
+        137 Ladwig                    ST_CLERK              50
+        138 Stiles                    ST_CLERK              50
+        139 Seo                       ST_CLERK              50
+        140 Patel                     ST_CLERK              50
+        141 Rajs                      ST_CLERK              50
+        142 Davies                    ST_CLERK              50
+
+EMPLOYEE_ID LAST_NAME                 JOB_ID     DEPARTMENT_ID
+----------- ------------------------- ---------- -------------
+        143 Matos                     ST_CLERK              50
+        144 Vargas                    ST_CLERK              50
+        180 Taylor                    SH_CLERK              50
+        181 Fleaur                    SH_CLERK              50
+        182 Sullivan                  SH_CLERK              50
+        183 Geoni                     SH_CLERK              50
+        184 Sarchand                  SH_CLERK              50
+        185 Bull                      SH_CLERK              50
+        186 Dellinger                 SH_CLERK              50
+        187 Cabrio                    SH_CLERK              50
+        188 Chung                     SH_CLERK              50
+
+EMPLOYEE_ID LAST_NAME                 JOB_ID     DEPARTMENT_ID
+----------- ------------------------- ---------- -------------
+        189 Dilly                     SH_CLERK              50
+        190 Gates                     SH_CLERK              50
+        191 Perkins                   SH_CLERK              50
+        192 Bell                      SH_CLERK              50
+        193 Everett                   SH_CLERK              50
+        194 McCain                    SH_CLERK              50
+        195 Jones                     SH_CLERK              50
+        196 Walsh                     SH_CLERK              50
+        197 Feeney                    SH_CLERK              50
+        198 OConnell                  SH_CLERK              50
+        199 Grant                     SH_CLERK              50
+
+EMPLOYEE_ID LAST_NAME                 JOB_ID     DEPARTMENT_ID
+----------- ------------------------- ---------- -------------
+        103 Hunold                    IT_PROG               60
+        104 Ernst                     IT_PROG               60
+        105 Austin                    IT_PROG               60
+        106 Pataballa                 IT_PROG               60
+        107 Lorentz                   IT_PROG               60
+        204 Baer                      PR_REP                70
+        145 Russell                   SA_MAN                80
+        146 Partners                  SA_MAN                80
+        147 Errazuriz                 SA_MAN                80
+        148 Cambrault                 SA_MAN                80
+        149 Zlotkey                   SA_MAN                80
+
+EMPLOYEE_ID LAST_NAME                 JOB_ID     DEPARTMENT_ID
+----------- ------------------------- ---------- -------------
+        150 Tucker                    SA_REP                80
+        151 Bernstein                 SA_REP                80
+        152 Hall                      SA_REP                80
+        153 Olsen                     SA_REP                80
+        154 Cambrault                 SA_REP                80
+        155 Tuvault                   SA_REP                80
+        156 King                      SA_REP                80
+        157 Sully                     SA_REP                80
+        158 McEwen                    SA_REP                80
+        159 Smith                     SA_REP                80
+        160 Doran                     SA_REP                80
+
+EMPLOYEE_ID LAST_NAME                 JOB_ID     DEPARTMENT_ID
+----------- ------------------------- ---------- -------------
+        161 Sewall                    SA_REP                80
+        162 Vishney                   SA_REP                80
+        163 Greene                    SA_REP                80
+        164 Marvins                   SA_REP                80
+        165 Lee                       SA_REP                80
+        166 Ande                      SA_REP                80
+        167 Banda                     SA_REP                80
+        168 Ozer                      SA_REP                80
+        169 Bloom                     SA_REP                80
+        170 Fox                       SA_REP                80
+        171 Smith                     SA_REP                80
+
+EMPLOYEE_ID LAST_NAME                 JOB_ID     DEPARTMENT_ID
+----------- ------------------------- ---------- -------------
+        172 Bates                     SA_REP                80
+        173 Kumar                     SA_REP                80
+        174 Abel                      SA_REP                80
+        175 Hutton                    SA_REP                80
+        176 Taylor                    SA_REP                80
+        177 Livingston                SA_REP                80
+        179 Johnson                   SA_REP                80
+        100 King                      AD_PRES               90
+        101 Kochhar                   AD_VP                 90
+        102 De Haan                   AD_VP                 90
+        108 Greenberg                 FI_MGR               100
+
+EMPLOYEE_ID LAST_NAME                 JOB_ID     DEPARTMENT_ID
+----------- ------------------------- ---------- -------------
+        109 Faviet                    FI_ACCOUNT           100
+        110 Chen                      FI_ACCOUNT           100
+        111 Sciarra                   FI_ACCOUNT           100
+        112 Urman                     FI_ACCOUNT           100
+        113 Popp                      FI_ACCOUNT           100
+        205 Higgins                   AC_MGR               110
+        206 Gietz                     AC_ACCOUNT           110
+        178 Grant                     SA_REP
+
+107 rows selected.
+
+SQL>

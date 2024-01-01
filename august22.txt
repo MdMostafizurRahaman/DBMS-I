@@ -1,0 +1,1381 @@
+
+SQL*Plus: Release 10.2.0.1.0 - Production on Tue Aug 22 14:46:42 2023
+
+Copyright (c) 1982, 2005, Oracle.  All rights reserved.
+
+SQL> connect hr
+Enter password:
+Connected.
+SQL> @E:\A/get_sal.sql;
+
+Function created.
+
+SQL> execute dbms_output.put_line(get_sal(100)));
+BEGIN dbms_output.put_line(get_sal(100))); END;
+
+                                        *
+ERROR at line 1:
+ORA-06550: line 1, column 41:
+PLS-00103: Encountered the symbol ")" when expecting one of the following:
+:= . ( % ;
+The symbol "(" was substituted for ")" to continue.
+
+
+SQL> execute dbms_output.put_line(get_sal(100));
+
+PL/SQL procedure successfully completed.
+
+SQL> execute dbms_output.put_line(get_sal(100));
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutputon;
+SP2-0735: unknown SET option beginning "serveroutp..."
+SQL> set serveroutput on;
+SQL> execute dbms_output.put_line(get_sal(100));
+24000
+
+PL/SQL procedure successfully completed.
+
+SQL> @E:\A/get_output.sql;
+SP2-0310: unable to open file "E:\A/get_output.sql"
+SQL> @E:\A/get_output.sql;
+The salary is: 24000
+
+PL/SQL procedure successfully completed.
+
+SQL> @E:\A/get_output.sql;
+The salary is: 24000
+
+PL/SQL procedure successfully completed.
+
+SQL> select job_id, get_sal(employee_id) from employees;
+
+JOB_ID     GET_SAL(EMPLOYEE_ID)
+---------- --------------------
+AD_PRES                   24000
+AD_VP                     17000
+AD_VP                     17000
+IT_PROG                    9000
+IT_PROG                    6000
+IT_PROG                    4800
+IT_PROG                    4800
+IT_PROG                    4200
+FI_MGR                    12000
+FI_ACCOUNT                 9000
+FI_ACCOUNT                 8200
+
+JOB_ID     GET_SAL(EMPLOYEE_ID)
+---------- --------------------
+FI_ACCOUNT                 7700
+FI_ACCOUNT                 7800
+FI_ACCOUNT                 6900
+PU_MAN                    11000
+PU_CLERK                   3100
+PU_CLERK                   2900
+PU_CLERK                   2800
+PU_CLERK                   2600
+PU_CLERK                   2500
+ST_MAN                     8000
+ST_MAN                     8200
+
+JOB_ID     GET_SAL(EMPLOYEE_ID)
+---------- --------------------
+ST_MAN                     7900
+ST_MAN                     6500
+ST_MAN                     5800
+ST_CLERK                   3200
+ST_CLERK                   2700
+ST_CLERK                   2400
+ST_CLERK                   2200
+ST_CLERK                   3300
+ST_CLERK                   2800
+ST_CLERK                   2500
+ST_CLERK                   2100
+
+JOB_ID     GET_SAL(EMPLOYEE_ID)
+---------- --------------------
+ST_CLERK                   3300
+ST_CLERK                   2900
+ST_CLERK                   2400
+ST_CLERK                   2200
+ST_CLERK                   3600
+ST_CLERK                   3200
+ST_CLERK                   2700
+ST_CLERK                   2500
+ST_CLERK                   3500
+ST_CLERK                   3100
+ST_CLERK                   2600
+
+JOB_ID     GET_SAL(EMPLOYEE_ID)
+---------- --------------------
+ST_CLERK                   2500
+SA_MAN                    14000
+SA_MAN                    13500
+SA_MAN                    12000
+SA_MAN                    11000
+SA_MAN                    10500
+SA_REP                    10000
+SA_REP                     9500
+SA_REP                     9000
+SA_REP                     8000
+SA_REP                     7500
+
+JOB_ID     GET_SAL(EMPLOYEE_ID)
+---------- --------------------
+SA_REP                     7000
+SA_REP                    10000
+SA_REP                     9500
+SA_REP                     9000
+SA_REP                     8000
+SA_REP                     7500
+SA_REP                     7000
+SA_REP                    10500
+SA_REP                     9500
+SA_REP                     7200
+SA_REP                     6800
+
+JOB_ID     GET_SAL(EMPLOYEE_ID)
+---------- --------------------
+SA_REP                     6400
+SA_REP                     6200
+SA_REP                    11500
+SA_REP                    10000
+SA_REP                     9600
+SA_REP                     7400
+SA_REP                     7300
+SA_REP                     6100
+SA_REP                    11000
+SA_REP                     8800
+SA_REP                     8600
+
+JOB_ID     GET_SAL(EMPLOYEE_ID)
+---------- --------------------
+SA_REP                     8400
+SA_REP                     7000
+SA_REP                     6200
+SH_CLERK                   3200
+SH_CLERK                   3100
+SH_CLERK                   2500
+SH_CLERK                   2800
+SH_CLERK                   4200
+SH_CLERK                   4100
+SH_CLERK                   3400
+SH_CLERK                   3000
+
+JOB_ID     GET_SAL(EMPLOYEE_ID)
+---------- --------------------
+SH_CLERK                   3800
+SH_CLERK                   3600
+SH_CLERK                   2900
+SH_CLERK                   2500
+SH_CLERK                   4000
+SH_CLERK                   3900
+SH_CLERK                   3200
+SH_CLERK                   2800
+SH_CLERK                   3100
+SH_CLERK                   3000
+SH_CLERK                   2600
+
+JOB_ID     GET_SAL(EMPLOYEE_ID)
+---------- --------------------
+SH_CLERK                   2600
+AD_ASST                    4400
+MK_MAN                    13000
+MK_REP                     6000
+HR_REP                     6500
+PR_REP                    10000
+AC_MGR                    12000
+AC_ACCOUNT                 8300
+
+107 rows selected.
+
+SQL> select job_id, get_sal(employee_id) salary from employees;
+
+JOB_ID         SALARY
+---------- ----------
+AD_PRES         24000
+AD_VP           17000
+AD_VP           17000
+IT_PROG          9000
+IT_PROG          6000
+IT_PROG          4800
+IT_PROG          4800
+IT_PROG          4200
+FI_MGR          12000
+FI_ACCOUNT       9000
+FI_ACCOUNT       8200
+
+JOB_ID         SALARY
+---------- ----------
+FI_ACCOUNT       7700
+FI_ACCOUNT       7800
+FI_ACCOUNT       6900
+PU_MAN          11000
+PU_CLERK         3100
+PU_CLERK         2900
+PU_CLERK         2800
+PU_CLERK         2600
+PU_CLERK         2500
+ST_MAN           8000
+ST_MAN           8200
+
+JOB_ID         SALARY
+---------- ----------
+ST_MAN           7900
+ST_MAN           6500
+ST_MAN           5800
+ST_CLERK         3200
+ST_CLERK         2700
+ST_CLERK         2400
+ST_CLERK         2200
+ST_CLERK         3300
+ST_CLERK         2800
+ST_CLERK         2500
+ST_CLERK         2100
+
+JOB_ID         SALARY
+---------- ----------
+ST_CLERK         3300
+ST_CLERK         2900
+ST_CLERK         2400
+ST_CLERK         2200
+ST_CLERK         3600
+ST_CLERK         3200
+ST_CLERK         2700
+ST_CLERK         2500
+ST_CLERK         3500
+ST_CLERK         3100
+ST_CLERK         2600
+
+JOB_ID         SALARY
+---------- ----------
+ST_CLERK         2500
+SA_MAN          14000
+SA_MAN          13500
+SA_MAN          12000
+SA_MAN          11000
+SA_MAN          10500
+SA_REP          10000
+SA_REP           9500
+SA_REP           9000
+SA_REP           8000
+SA_REP           7500
+
+JOB_ID         SALARY
+---------- ----------
+SA_REP           7000
+SA_REP          10000
+SA_REP           9500
+SA_REP           9000
+SA_REP           8000
+SA_REP           7500
+SA_REP           7000
+SA_REP          10500
+SA_REP           9500
+SA_REP           7200
+SA_REP           6800
+
+JOB_ID         SALARY
+---------- ----------
+SA_REP           6400
+SA_REP           6200
+SA_REP          11500
+SA_REP          10000
+SA_REP           9600
+SA_REP           7400
+SA_REP           7300
+SA_REP           6100
+SA_REP          11000
+SA_REP           8800
+SA_REP           8600
+
+JOB_ID         SALARY
+---------- ----------
+SA_REP           8400
+SA_REP           7000
+SA_REP           6200
+SH_CLERK         3200
+SH_CLERK         3100
+SH_CLERK         2500
+SH_CLERK         2800
+SH_CLERK         4200
+SH_CLERK         4100
+SH_CLERK         3400
+SH_CLERK         3000
+
+JOB_ID         SALARY
+---------- ----------
+SH_CLERK         3800
+SH_CLERK         3600
+SH_CLERK         2900
+SH_CLERK         2500
+SH_CLERK         4000
+SH_CLERK         3900
+SH_CLERK         3200
+SH_CLERK         2800
+SH_CLERK         3100
+SH_CLERK         3000
+SH_CLERK         2600
+
+JOB_ID         SALARY
+---------- ----------
+SH_CLERK         2600
+AD_ASST          4400
+MK_MAN          13000
+MK_REP           6000
+HR_REP           6500
+PR_REP          10000
+AC_MGR          12000
+AC_ACCOUNT       8300
+
+107 rows selected.
+
+SQL> select job_id from employees where get_sal(employee_id );
+select job_id from employees where get_sal(employee_id )
+                                                       *
+ERROR at line 1:
+ORA-00920: invalid relational operator
+
+
+SQL> select job_id from employees where get_sal(employee_id  = 102);
+select job_id from employees where get_sal(employee_id  = 102)
+                                                        *
+ERROR at line 1:
+ORA-00907: missing right parenthesis
+
+
+SQL> select job_id from employees where get_sal(employee_id);
+select job_id from employees where get_sal(employee_id)
+                                                      *
+ERROR at line 1:
+ORA-00920: invalid relational operator
+
+
+SQL> select job_id from employees where get_sal(employee_id = 2600);
+select job_id from employees where get_sal(employee_id = 2600)
+                                                       *
+ERROR at line 1:
+ORA-00907: missing right parenthesis
+
+
+SQL> select job_id from employees where get_sal(employee_id = 2600)
+  2
+SQL> select job_id from employees where get_sal(employee_id);
+select job_id from employees where get_sal(employee_id)
+                                                      *
+ERROR at line 1:
+ORA-00920: invalid relational operator
+
+
+SQL> select job_id from employees where get_sal(employee_id = 82);
+select job_id from employees where get_sal(employee_id = 82)
+                                                       *
+ERROR at line 1:
+ORA-00907: missing right parenthesis
+
+
+SQL> select job_id from employees where get_sal(employee_id = (82));
+select job_id from employees where get_sal(employee_id = (82))
+                                                       *
+ERROR at line 1:
+ORA-00907: missing right parenthesis
+
+
+SQL> select job_id, employee_id from employees;
+
+JOB_ID     EMPLOYEE_ID
+---------- -----------
+AD_PRES            100
+AD_VP              101
+AD_VP              102
+IT_PROG            103
+IT_PROG            104
+IT_PROG            105
+IT_PROG            106
+IT_PROG            107
+FI_MGR             108
+FI_ACCOUNT         109
+FI_ACCOUNT         110
+
+JOB_ID     EMPLOYEE_ID
+---------- -----------
+FI_ACCOUNT         111
+FI_ACCOUNT         112
+FI_ACCOUNT         113
+PU_MAN             114
+PU_CLERK           115
+PU_CLERK           116
+PU_CLERK           117
+PU_CLERK           118
+PU_CLERK           119
+ST_MAN             120
+ST_MAN             121
+
+JOB_ID     EMPLOYEE_ID
+---------- -----------
+ST_MAN             122
+ST_MAN             123
+ST_MAN             124
+ST_CLERK           125
+ST_CLERK           126
+ST_CLERK           127
+ST_CLERK           128
+ST_CLERK           129
+ST_CLERK           130
+ST_CLERK           131
+ST_CLERK           132
+
+JOB_ID     EMPLOYEE_ID
+---------- -----------
+ST_CLERK           133
+ST_CLERK           134
+ST_CLERK           135
+ST_CLERK           136
+ST_CLERK           137
+ST_CLERK           138
+ST_CLERK           139
+ST_CLERK           140
+ST_CLERK           141
+ST_CLERK           142
+ST_CLERK           143
+
+JOB_ID     EMPLOYEE_ID
+---------- -----------
+ST_CLERK           144
+SA_MAN             145
+SA_MAN             146
+SA_MAN             147
+SA_MAN             148
+SA_MAN             149
+SA_REP             150
+SA_REP             151
+SA_REP             152
+SA_REP             153
+SA_REP             154
+
+JOB_ID     EMPLOYEE_ID
+---------- -----------
+SA_REP             155
+SA_REP             156
+SA_REP             157
+SA_REP             158
+SA_REP             159
+SA_REP             160
+SA_REP             161
+SA_REP             162
+SA_REP             163
+SA_REP             164
+SA_REP             165
+
+JOB_ID     EMPLOYEE_ID
+---------- -----------
+SA_REP             166
+SA_REP             167
+SA_REP             168
+SA_REP             169
+SA_REP             170
+SA_REP             171
+SA_REP             172
+SA_REP             173
+SA_REP             174
+SA_REP             175
+SA_REP             176
+
+JOB_ID     EMPLOYEE_ID
+---------- -----------
+SA_REP             177
+SA_REP             178
+SA_REP             179
+SH_CLERK           180
+SH_CLERK           181
+SH_CLERK           182
+SH_CLERK           183
+SH_CLERK           184
+SH_CLERK           185
+SH_CLERK           186
+SH_CLERK           187
+
+JOB_ID     EMPLOYEE_ID
+---------- -----------
+SH_CLERK           188
+SH_CLERK           189
+SH_CLERK           190
+SH_CLERK           191
+SH_CLERK           192
+SH_CLERK           193
+SH_CLERK           194
+SH_CLERK           195
+SH_CLERK           196
+SH_CLERK           197
+SH_CLERK           198
+
+JOB_ID     EMPLOYEE_ID
+---------- -----------
+SH_CLERK           199
+AD_ASST            200
+MK_MAN             201
+MK_REP             202
+HR_REP             203
+PR_REP             204
+AC_MGR             205
+AC_ACCOUNT         206
+
+107 rows selected.
+
+SQL> select job_id from employees where get_sal(employee_id = 199);
+select job_id from employees where get_sal(employee_id = 199)
+                                                       *
+ERROR at line 1:
+ORA-00907: missing right parenthesis
+
+
+SQL> select job_id from employees where (get_sal(employee_id = 199));
+select job_id from employees where (get_sal(employee_id = 199))
+                                                        *
+ERROR at line 1:
+ORA-00907: missing right parenthesis
+
+
+SQL> select job_id from employees where salary = (get_sal(employee_id = 199));
+select job_id from employees where salary = (get_sal(employee_id = 199))
+                                                                 *
+ERROR at line 1:
+ORA-00907: missing right parenthesis
+
+
+SQL> select job_id from employees where salary = get_sal(employee_id = 199);
+select job_id from employees where salary = get_sal(employee_id = 199)
+                                                                *
+ERROR at line 1:
+ORA-00907: missing right parenthesis
+
+
+SQL> select job_id from employees where salary = get_sal(199);
+
+JOB_ID
+----------
+PU_CLERK
+ST_CLERK
+SH_CLERK
+SH_CLERK
+
+SQL> select job_id from employees where get_sal(199);
+select job_id from employees where get_sal(199)
+                                              *
+ERROR at line 1:
+ORA-00920: invalid relational operator
+
+
+SQL> select job_id from employees where salary = get_sal(199);
+
+JOB_ID
+----------
+PU_CLERK
+ST_CLERK
+SH_CLERK
+SH_CLERK
+
+SQL> select job_id salary from employees where salary = get_sal(199);
+
+SALARY
+----------
+PU_CLERK
+ST_CLERK
+SH_CLERK
+SH_CLERK
+
+SQL> select job_id employee_id from employees where salary = get_sal(199);
+
+EMPLOYEE_I
+----------
+PU_CLERK
+ST_CLERK
+SH_CLERK
+SH_CLERK
+
+SQL> select job_id from employees where salary = get_sal(199);
+
+JOB_ID
+----------
+PU_CLERK
+ST_CLERK
+SH_CLERK
+SH_CLERK
+
+SQL> @E:\A/area_f.sql;
+    v_radius := get_sal(100);
+             *
+ERROR at line 2:
+ORA-06550: line 2, column 14:
+PLS-00103: Encountered the symbol "=" when expecting one of the following:
+constant exception <an identifier>
+<a double-quoted delimited-identifier> table LONG_ double ref
+char time timestamp interval date binary national character
+nchar
+The symbol "<an identifier>" was substituted for "=" to continue.
+
+
+SQL> @E:\A/area_f.sql;
+The radius is 1809561600
+
+PL/SQL procedure successfully completed.
+
+SQL> @E:\A/area_f.sql;
+The radius is 31416
+
+PL/SQL procedure successfully completed.
+
+SQL> execute dbms_output.put_line(circle2(10));
+BEGIN dbms_output.put_line(circle2(10)); END;
+
+                           *
+ERROR at line 1:
+ORA-06550: line 1, column 28:
+PLS-00201: identifier 'CIRCLE2' must be declared
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+
+
+SQL> execute dbms_output.put_line(10);
+10
+
+PL/SQL procedure successfully completed.
+
+SQL> execute dbms_output.put_line(circle2(10));
+BEGIN dbms_output.put_line(circle2(10)); END;
+
+                           *
+ERROR at line 1:
+ORA-06550: line 1, column 28:
+PLS-00201: identifier 'CIRCLE2' must be declared
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+
+
+SQL> execute dbms_output.put_line(circle2(10));
+BEGIN dbms_output.put_line(circle2(10)); END;
+
+                           *
+ERROR at line 1:
+ORA-06550: line 1, column 28:
+PLS-00201: identifier 'CIRCLE2' must be declared
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+
+
+SQL> @E:\A/circle_f.sql;
+
+Function created.
+
+SQL> execute dbms_output.put_line(circle2(10));
+314.15
+
+PL/SQL procedure successfully completed.
+
+SQL> @E:\A/area_f.sql;
+    v_area number = ciecle2(10);
+                  *
+ERROR at line 2:
+ORA-06550: line 2, column 19:
+PLS-00103: Encountered the symbol "=" when expecting one of the following:
+:= . ( @ % ; not null range default character
+ORA-06550: line 3, column 1:
+PLS-00103: Encountered the symbol "BEGIN"
+
+
+SQL> @E:\A/area_f.sql;
+    v_area number = circle2(10);
+                  *
+ERROR at line 2:
+ORA-06550: line 2, column 19:
+PLS-00103: Encountered the symbol "=" when expecting one of the following:
+:= . ( @ % ; not null range default character
+ORA-06550: line 3, column 1:
+PLS-00103: Encountered the symbol "BEGIN"
+
+
+SQL> @E:\A/area_f.sql;
+The radius is 314.15
+
+PL/SQL procedure successfully completed.
+
+SQL> select employee_id, last_name, 12*salary+12*salary*nvl(commission_pct,0), tax(salary) from employees where department_id = 100;
+select employee_id, last_name, 12*salary+12*salary*nvl(commission_pct,0), tax(salary) from employees where department_id = 100
+                                                                          *
+ERROR at line 1:
+ORA-00904: "TAX": invalid identifier
+
+
+SQL> @E:\A/tax.sql;
+
+Function created.
+
+SQL> select employee_id, last_name, 12*salary+12*salary*nvl(commission_pct,0), tax(salary) from employees where department_id = 100;
+
+EMPLOYEE_ID LAST_NAME                 12*SALARY+12*SALARY*NVL(COMMISSION_PCT,0)
+----------- ------------------------- -----------------------------------------
+TAX(SALARY)
+-----------
+        108 Greenberg                                                    144000
+       1200
+
+        109 Faviet                                                       108000
+        900
+
+        110 Chen                                                          98400
+        820
+
+
+EMPLOYEE_ID LAST_NAME                 12*SALARY+12*SALARY*NVL(COMMISSION_PCT,0)
+----------- ------------------------- -----------------------------------------
+TAX(SALARY)
+-----------
+        111 Sciarra                                                       92400
+        770
+
+        112 Urman                                                         93600
+        780
+
+        113 Popp                                                          82800
+        690
+
+
+6 rows selected.
+
+SQL> select employee_id, last_name, 12*salary+12*salary*nvl(commission_pct,0), tax(salary) from employees where department_id = 100;
+
+EMPLOYEE_ID LAST_NAME                 12*SALARY+12*SALARY*NVL(COMMISSION_PCT,0)
+----------- ------------------------- -----------------------------------------
+TAX(SALARY)
+-----------
+        108 Greenberg                                                    144000
+       1200
+
+        109 Faviet                                                       108000
+        900
+
+        110 Chen                                                          98400
+        820
+
+
+EMPLOYEE_ID LAST_NAME                 12*SALARY+12*SALARY*NVL(COMMISSION_PCT,0)
+----------- ------------------------- -----------------------------------------
+TAX(SALARY)
+-----------
+        111 Sciarra                                                       92400
+        770
+
+        112 Urman                                                         93600
+        780
+
+        113 Popp                                                          82800
+        690
+
+
+6 rows selected.
+
+SQL> @E:\A/area_f.sql;
+The radius is 314.15
+
+PL/SQL procedure successfully completed.
+
+SQL> execute dbms_output.put_line(circle2(10));
+314.15
+
+PL/SQL procedure successfully completed.
+
+SQL> select employee_id, last_name, 12*salary+12*salary*nvl(commission_pct,0), tax(salary) from employees where department_id = 100;
+     @E:\A/circle_f.sql;
+
+Function created.
+
+SQL> @E:\A/tax.sql;
+
+Warning: Function created with compilation errors.
+
+SQL> @E:\A/tax.sql;
+
+Warning: Function created with compilation errors.
+
+SQL> @E:\A/tax.sql;
+
+Warning: Function created with compilation errors.
+
+SQL> @E:\A/tax.sql;
+
+Warning: Function created with compilation errors.
+
+SQL> select employee_id, last_name, 12*salary+12*salary*nvl(commission_pct,0), tax(salary) from employees where department_id = 100;
+select employee_id, last_name, 12*salary+12*salary*nvl(commission_pct,0), tax(salary) from employees where department_id = 100
+                                                                          *
+ERROR at line 1:
+ORA-06575: Package or function TAX is in an invalid state
+
+
+SQL>
+SQL> select employee_id, last_name, 12*salary+12*salary*nvl(commission_pct,0), tax(salary) from employees where department_id = 100;
+select employee_id, last_name, 12*salary+12*salary*nvl(commission_pct,0), tax(salary) from employees where department_id = 100
+                                                                          *
+ERROR at line 1:
+ORA-06575: Package or function TAX is in an invalid state
+
+
+SQL> @E:\A/area_f.sql;
+The radius is 314.15
+
+PL/SQL procedure successfully completed.
+
+SQL> @E:\A/tax.sql;
+
+Warning: Function created with compilation errors.
+
+SQL> select employee_id, last_name, 12*salary+12*salary*nvl(commission_pct,0), tax(salary) from employees where department_id = 100;
+select employee_id, last_name, 12*salary+12*salary*nvl(commission_pct,0), tax(salary) from employees where department_id = 100
+                                                                          *
+ERROR at line 1:
+ORA-06575: Package or function TAX is in an invalid state
+
+
+SQL> @E:\A/tax.sql;
+
+Warning: Function created with compilation errors.
+
+SQL> @E:\A/tax.sql;
+
+Warning: Function created with compilation errors.
+
+SQL> @E:\A/tax.sql;
+
+Warning: Function created with compilation errors.
+
+SQL> @E:\A/tax.sql;
+
+Warning: Function created with compilation errors.
+
+SQL> @E:\A/tax.sql;
+
+Warning: Function created with compilation errors.
+
+SQL> @E:\A/tax.sql;
+
+Warning: Function created with compilation errors.
+
+SQL> @E:\A/tax.sql;
+
+Warning: Function created with compilation errors.
+
+SQL> @E:\A/tax.sql;
+
+Warning: Function created with compilation errors.
+
+SQL> @E:\A/tax.sql;
+
+Warning: Function created with compilation errors.
+
+SQL> @E:\A/tax.sql;
+
+Warning: Function created with compilation errors.
+
+SQL> @E:\A/tax.sql;
+
+Warning: Function created with compilation errors.
+
+SQL>
+SQL>
+SQL> @E:\A/tax.sql;
+
+Warning: Function created with compilation errors.
+
+SQL> @E:\A/tax.sql;
+
+Function created.
+
+SQL> select employee_id, last_name, 12*salary+12*salary*nvl(commission_pct,0) Annual, tax(salary) from employees where department_id = 100;
+select employee_id, last_name, 12*salary+12*salary*nvl(commission_pct,0) Annual, tax(salary) from employees where department_id = 100
+
+     *
+ERROR at line 1:
+ORA-06575: Package or function TAX is in an invalid state
+
+
+SQL> select employee_id, last_name, 12*salary+12*salary*nvl(commission_pct,0) Annual, get_tax(salary) from employees where department_id = 100;
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL GET_TAX(SALARY)
+----------- ------------------------- ---------- ---------------
+        108 Greenberg                     144000
+        109 Faviet                        108000
+        110 Chen                           98400
+        111 Sciarra                        92400
+        112 Urman                          93600
+        113 Popp                           82800
+
+6 rows selected.
+
+SQL> select employee_id, last_name, 12*salary+12*salary*nvl(commission_pct,0), get_tax(salary) from employees where department_id = 100;
+
+EMPLOYEE_ID LAST_NAME                 12*SALARY+12*SALARY*NVL(COMMISSION_PCT,0)
+----------- ------------------------- -----------------------------------------
+GET_TAX(SALARY)
+---------------
+        108 Greenberg                                                    144000
+
+
+        109 Faviet                                                       108000
+
+
+        110 Chen                                                          98400
+
+
+
+EMPLOYEE_ID LAST_NAME                 12*SALARY+12*SALARY*NVL(COMMISSION_PCT,0)
+----------- ------------------------- -----------------------------------------
+GET_TAX(SALARY)
+---------------
+        111 Sciarra                                                       92400
+
+
+        112 Urman                                                         93600
+
+
+        113 Popp                                                          82800
+
+
+
+6 rows selected.
+
+SQL> select employee_id, last_name, 12*salary+12*salary*nvl(commission_pct,0) Annual, get_tax(salary) from employees where department_id = 100;
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL GET_TAX(SALARY)
+----------- ------------------------- ---------- ---------------
+        108 Greenberg                     144000
+        109 Faviet                        108000
+        110 Chen                           98400
+        111 Sciarra                        92400
+        112 Urman                          93600
+        113 Popp                           82800
+
+6 rows selected.
+
+SQL> select employee_id, last_name, 12*salary+12*salary*nvl(commission_pct,0) Annual, get_tax(employee_id) from employees;
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL GET_TAX(EMPLOYEE_ID)
+----------- ------------------------- ---------- --------------------
+        100 King                          288000                14400
+        101 Kochhar                       204000                10200
+        102 De Haan                       204000                10200
+        103 Hunold                        108000                 5400
+        104 Ernst                          72000                 3600
+        105 Austin                         57600                 2880
+        106 Pataballa                      57600                 2880
+        107 Lorentz                        50400                 2520
+        108 Greenberg                     144000                 7200
+        109 Faviet                        108000                 5400
+        110 Chen                           98400                 4920
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL GET_TAX(EMPLOYEE_ID)
+----------- ------------------------- ---------- --------------------
+        111 Sciarra                        92400                 4620
+        112 Urman                          93600                 4680
+        113 Popp                           82800                 4140
+        114 Raphaely                      132000                 6600
+        115 Khoo                           37200                 1860
+        116 Baida                          34800                 1740
+        117 Tobias                         33600                 1680
+        118 Himuro                         31200                 1560
+        119 Colmenares                     30000                 1500
+        120 Weiss                          96000                 4800
+        121 Fripp                          98400                 4920
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL GET_TAX(EMPLOYEE_ID)
+----------- ------------------------- ---------- --------------------
+        122 Kaufling                       94800                 4740
+        123 Vollman                        78000                 3900
+        124 Mourgos                        69600                 3480
+        125 Nayer                          38400                 1920
+        126 Mikkilineni                    32400                 1620
+        127 Landry                         28800                 1440
+        128 Markle                         26400                 1320
+        129 Bissot                         39600                 1980
+        130 Atkinson                       33600                 1680
+        131 Marlow                         30000                 1500
+        132 Olson                          25200                 1260
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL GET_TAX(EMPLOYEE_ID)
+----------- ------------------------- ---------- --------------------
+        133 Mallin                         39600                 1980
+        134 Rogers                         34800                 1740
+        135 Gee                            28800                 1440
+        136 Philtanker                     26400                 1320
+        137 Ladwig                         43200                 2160
+        138 Stiles                         38400                 1920
+        139 Seo                            32400                 1620
+        140 Patel                          30000                 1500
+        141 Rajs                           42000                 2100
+        142 Davies                         37200                 1860
+        143 Matos                          31200                 1560
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL GET_TAX(EMPLOYEE_ID)
+----------- ------------------------- ---------- --------------------
+        144 Vargas                         30000                 1500
+        145 Russell                       235200                11760
+        146 Partners                      210600                10530
+        147 Errazuriz                     187200                 9360
+        148 Cambrault                     171600                 8580
+        149 Zlotkey                       151200                 7560
+        150 Tucker                        156000                 7800
+        151 Bernstein                     142500                 7125
+        152 Hall                          135000                 6750
+        153 Olsen                         115200                 5760
+        154 Cambrault                     108000                 5400
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL GET_TAX(EMPLOYEE_ID)
+----------- ------------------------- ---------- --------------------
+        155 Tuvault                        96600                 4830
+        156 King                          162000                 8100
+        157 Sully                         153900                 7695
+        158 McEwen                        145800                 7290
+        159 Smith                         124800                 6240
+        160 Doran                         117000                 5850
+        161 Sewall                        105000                 5250
+        162 Vishney                       157500                 7875
+        163 Greene                        131100                 6555
+        164 Marvins                        95040                 4752
+        165 Lee                            89760                 4488
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL GET_TAX(EMPLOYEE_ID)
+----------- ------------------------- ---------- --------------------
+        166 Ande                           84480                 4224
+        167 Banda                          81840                 4092
+        168 Ozer                          172500                 8625
+        169 Bloom                         144000                 7200
+        170 Fox                           138240                 6912
+        171 Smith                         102120                 5106
+        172 Bates                         100740                 5037
+        173 Kumar                          80520                 4026
+        174 Abel                          171600                 8580
+        175 Hutton                        132000                 6600
+        176 Taylor                        123840                 6192
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL GET_TAX(EMPLOYEE_ID)
+----------- ------------------------- ---------- --------------------
+        177 Livingston                    120960                 6048
+        178 Grant                          96600                 4830
+        179 Johnson                        81840                 4092
+        180 Taylor                         38400                 1920
+        181 Fleaur                         37200                 1860
+        182 Sullivan                       30000                 1500
+        183 Geoni                          33600                 1680
+        184 Sarchand                       50400                 2520
+        185 Bull                           49200                 2460
+        186 Dellinger                      40800                 2040
+        187 Cabrio                         36000                 1800
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL GET_TAX(EMPLOYEE_ID)
+----------- ------------------------- ---------- --------------------
+        188 Chung                          45600                 2280
+        189 Dilly                          43200                 2160
+        190 Gates                          34800                 1740
+        191 Perkins                        30000                 1500
+        192 Bell                           48000                 2400
+        193 Everett                        46800                 2340
+        194 McCain                         38400                 1920
+        195 Jones                          33600                 1680
+        196 Walsh                          37200                 1860
+        197 Feeney                         36000                 1800
+        198 OConnell                       31200                 1560
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL GET_TAX(EMPLOYEE_ID)
+----------- ------------------------- ---------- --------------------
+        199 Grant                          31200                 1560
+        200 Whalen                         52800                 2640
+        201 Hartstein                     156000                 7800
+        202 Fay                            72000                 3600
+        203 Mavris                         78000                 3900
+        204 Baer                          120000                 6000
+        205 Higgins                       144000                 7200
+        206 Gietz                          99600                 4980
+
+107 rows selected.
+
+SQL> select employee_id, last_name, 12*salary+12*salary*nvl(commission_pct,0) Annual, get_tax(employee_id) Tax from employees;
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL        TAX
+----------- ------------------------- ---------- ----------
+        100 King                          288000      14400
+        101 Kochhar                       204000      10200
+        102 De Haan                       204000      10200
+        103 Hunold                        108000       5400
+        104 Ernst                          72000       3600
+        105 Austin                         57600       2880
+        106 Pataballa                      57600       2880
+        107 Lorentz                        50400       2520
+        108 Greenberg                     144000       7200
+        109 Faviet                        108000       5400
+        110 Chen                           98400       4920
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL        TAX
+----------- ------------------------- ---------- ----------
+        111 Sciarra                        92400       4620
+        112 Urman                          93600       4680
+        113 Popp                           82800       4140
+        114 Raphaely                      132000       6600
+        115 Khoo                           37200       1860
+        116 Baida                          34800       1740
+        117 Tobias                         33600       1680
+        118 Himuro                         31200       1560
+        119 Colmenares                     30000       1500
+        120 Weiss                          96000       4800
+        121 Fripp                          98400       4920
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL        TAX
+----------- ------------------------- ---------- ----------
+        122 Kaufling                       94800       4740
+        123 Vollman                        78000       3900
+        124 Mourgos                        69600       3480
+        125 Nayer                          38400       1920
+        126 Mikkilineni                    32400       1620
+        127 Landry                         28800       1440
+        128 Markle                         26400       1320
+        129 Bissot                         39600       1980
+        130 Atkinson                       33600       1680
+        131 Marlow                         30000       1500
+        132 Olson                          25200       1260
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL        TAX
+----------- ------------------------- ---------- ----------
+        133 Mallin                         39600       1980
+        134 Rogers                         34800       1740
+        135 Gee                            28800       1440
+        136 Philtanker                     26400       1320
+        137 Ladwig                         43200       2160
+        138 Stiles                         38400       1920
+        139 Seo                            32400       1620
+        140 Patel                          30000       1500
+        141 Rajs                           42000       2100
+        142 Davies                         37200       1860
+        143 Matos                          31200       1560
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL        TAX
+----------- ------------------------- ---------- ----------
+        144 Vargas                         30000       1500
+        145 Russell                       235200      11760
+        146 Partners                      210600      10530
+        147 Errazuriz                     187200       9360
+        148 Cambrault                     171600       8580
+        149 Zlotkey                       151200       7560
+        150 Tucker                        156000       7800
+        151 Bernstein                     142500       7125
+        152 Hall                          135000       6750
+        153 Olsen                         115200       5760
+        154 Cambrault                     108000       5400
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL        TAX
+----------- ------------------------- ---------- ----------
+        155 Tuvault                        96600       4830
+        156 King                          162000       8100
+        157 Sully                         153900       7695
+        158 McEwen                        145800       7290
+        159 Smith                         124800       6240
+        160 Doran                         117000       5850
+        161 Sewall                        105000       5250
+        162 Vishney                       157500       7875
+        163 Greene                        131100       6555
+        164 Marvins                        95040       4752
+        165 Lee                            89760       4488
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL        TAX
+----------- ------------------------- ---------- ----------
+        166 Ande                           84480       4224
+        167 Banda                          81840       4092
+        168 Ozer                          172500       8625
+        169 Bloom                         144000       7200
+        170 Fox                           138240       6912
+        171 Smith                         102120       5106
+        172 Bates                         100740       5037
+        173 Kumar                          80520       4026
+        174 Abel                          171600       8580
+        175 Hutton                        132000       6600
+        176 Taylor                        123840       6192
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL        TAX
+----------- ------------------------- ---------- ----------
+        177 Livingston                    120960       6048
+        178 Grant                          96600       4830
+        179 Johnson                        81840       4092
+        180 Taylor                         38400       1920
+        181 Fleaur                         37200       1860
+        182 Sullivan                       30000       1500
+        183 Geoni                          33600       1680
+        184 Sarchand                       50400       2520
+        185 Bull                           49200       2460
+        186 Dellinger                      40800       2040
+        187 Cabrio                         36000       1800
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL        TAX
+----------- ------------------------- ---------- ----------
+        188 Chung                          45600       2280
+        189 Dilly                          43200       2160
+        190 Gates                          34800       1740
+        191 Perkins                        30000       1500
+        192 Bell                           48000       2400
+        193 Everett                        46800       2340
+        194 McCain                         38400       1920
+        195 Jones                          33600       1680
+        196 Walsh                          37200       1860
+        197 Feeney                         36000       1800
+        198 OConnell                       31200       1560
+
+EMPLOYEE_ID LAST_NAME                     ANNUAL        TAX
+----------- ------------------------- ---------- ----------
+        199 Grant                          31200       1560
+        200 Whalen                         52800       2640
+        201 Hartstein                     156000       7800
+        202 Fay                            72000       3600
+        203 Mavris                         78000       3900
+        204 Baer                          120000       6000
+        205 Higgins                       144000       7200
+        206 Gietz                          99600       4980
+
+107 rows selected.
+
+SQL> select employee_id ID, last_name, 12*salary+12*salary*nvl(commission_pct,0) Annual, get_tax(employee_id) Tax from employees;
+
+        ID LAST_NAME                     ANNUAL        TAX
+---------- ------------------------- ---------- ----------
+       100 King                          288000      14400
+       101 Kochhar                       204000      10200
+       102 De Haan                       204000      10200
+       103 Hunold                        108000       5400
+       104 Ernst                          72000       3600
+       105 Austin                         57600       2880
+       106 Pataballa                      57600       2880
+       107 Lorentz                        50400       2520
+       108 Greenberg                     144000       7200
+       109 Faviet                        108000       5400
+       110 Chen                           98400       4920
+
+        ID LAST_NAME                     ANNUAL        TAX
+---------- ------------------------- ---------- ----------
+       111 Sciarra                        92400       4620
+       112 Urman                          93600       4680
+       113 Popp                           82800       4140
+       114 Raphaely                      132000       6600
+       115 Khoo                           37200       1860
+       116 Baida                          34800       1740
+       117 Tobias                         33600       1680
+       118 Himuro                         31200       1560
+       119 Colmenares                     30000       1500
+       120 Weiss                          96000       4800
+       121 Fripp                          98400       4920
+
+        ID LAST_NAME                     ANNUAL        TAX
+---------- ------------------------- ---------- ----------
+       122 Kaufling                       94800       4740
+       123 Vollman                        78000       3900
+       124 Mourgos                        69600       3480
+       125 Nayer                          38400       1920
+       126 Mikkilineni                    32400       1620
+       127 Landry                         28800       1440
+       128 Markle                         26400       1320
+       129 Bissot                         39600       1980
+       130 Atkinson                       33600       1680
+       131 Marlow                         30000       1500
+       132 Olson                          25200       1260
+
+        ID LAST_NAME                     ANNUAL        TAX
+---------- ------------------------- ---------- ----------
+       133 Mallin                         39600       1980
+       134 Rogers                         34800       1740
+       135 Gee                            28800       1440
+       136 Philtanker                     26400       1320
+       137 Ladwig                         43200       2160
+       138 Stiles                         38400       1920
+       139 Seo                            32400       1620
+       140 Patel                          30000       1500
+       141 Rajs                           42000       2100
+       142 Davies                         37200       1860
+       143 Matos                          31200       1560
+
+        ID LAST_NAME                     ANNUAL        TAX
+---------- ------------------------- ---------- ----------
+       144 Vargas                         30000       1500
+       145 Russell                       235200      11760
+       146 Partners                      210600      10530
+       147 Errazuriz                     187200       9360
+       148 Cambrault                     171600       8580
+       149 Zlotkey                       151200       7560
+       150 Tucker                        156000       7800
+       151 Bernstein                     142500       7125
+       152 Hall                          135000       6750
+       153 Olsen                         115200       5760
+       154 Cambrault                     108000       5400
+
+        ID LAST_NAME                     ANNUAL        TAX
+---------- ------------------------- ---------- ----------
+       155 Tuvault                        96600       4830
+       156 King                          162000       8100
+       157 Sully                         153900       7695
+       158 McEwen                        145800       7290
+       159 Smith                         124800       6240
+       160 Doran                         117000       5850
+       161 Sewall                        105000       5250
+       162 Vishney                       157500       7875
+       163 Greene                        131100       6555
+       164 Marvins                        95040       4752
+       165 Lee                            89760       4488
+
+        ID LAST_NAME                     ANNUAL        TAX
+---------- ------------------------- ---------- ----------
+       166 Ande                           84480       4224
+       167 Banda                          81840       4092
+       168 Ozer                          172500       8625
+       169 Bloom                         144000       7200
+       170 Fox                           138240       6912
+       171 Smith                         102120       5106
+       172 Bates                         100740       5037
+       173 Kumar                          80520       4026
+       174 Abel                          171600       8580
+       175 Hutton                        132000       6600
+       176 Taylor                        123840       6192
+
+        ID LAST_NAME                     ANNUAL        TAX
+---------- ------------------------- ---------- ----------
+       177 Livingston                    120960       6048
+       178 Grant                          96600       4830
+       179 Johnson                        81840       4092
+       180 Taylor                         38400       1920
+       181 Fleaur                         37200       1860
+       182 Sullivan                       30000       1500
+       183 Geoni                          33600       1680
+       184 Sarchand                       50400       2520
+       185 Bull                           49200       2460
+       186 Dellinger                      40800       2040
+       187 Cabrio                         36000       1800
+
+        ID LAST_NAME                     ANNUAL        TAX
+---------- ------------------------- ---------- ----------
+       188 Chung                          45600       2280
+       189 Dilly                          43200       2160
+       190 Gates                          34800       1740
+       191 Perkins                        30000       1500
+       192 Bell                           48000       2400
+       193 Everett                        46800       2340
+       194 McCain                         38400       1920
+       195 Jones                          33600       1680
+       196 Walsh                          37200       1860
+       197 Feeney                         36000       1800
+       198 OConnell                       31200       1560
+
+        ID LAST_NAME                     ANNUAL        TAX
+---------- ------------------------- ---------- ----------
+       199 Grant                          31200       1560
+       200 Whalen                         52800       2640
+       201 Hartstein                     156000       7800
+       202 Fay                            72000       3600
+       203 Mavris                         78000       3900
+       204 Baer                          120000       6000
+       205 Higgins                       144000       7200
+       206 Gietz                          99600       4980
+
+107 rows selected.
